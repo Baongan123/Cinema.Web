@@ -36,3 +36,4 @@ C:\Users\User\Desktop\API\Cinema.Web\Cinema.Web\obj\Debug\netcoreapp3.1\Cinema.W
 C:\Users\User\Desktop\API\Cinema.Web\Cinema.Web\obj\Debug\netcoreapp3.1\Cinema.Web.dll
 C:\Users\User\Desktop\API\Cinema.Web\Cinema.Web\obj\Debug\netcoreapp3.1\Cinema.Web.pdb
 C:\Users\User\Desktop\API\Cinema.Web\Cinema.Web\obj\Debug\netcoreapp3.1\Cinema.Web.genruntimeconfig.cache
+C:\Users\User\Desktop\API\Cinema.Web\Cinema.Web\bin\Debug\netcoreapp3.1\libman.json

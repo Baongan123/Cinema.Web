@@ -13,9 +13,10 @@ home.drawTable = function () {
                         <td>${v.filmId}</td>
                         <td>${v.filmName}</td>
                         <td>${v.title}</td>
-                         <td>${v.description}</td>
+                        <td>${v.description}</td>
                         <td>${v.linkTrailer}</td>
-                        <td>${v.image}</td>
+                        <td><img src="${v.image}" width="100" height="100" /></td>
+                        
                     </tr>`
                 );
             });

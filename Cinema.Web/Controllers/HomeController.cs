@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Cinema.Web.Models;
 using Cinema.Web.Ultilities;
 using Cinema.Web.Models.Film;
+using Cinema.Web.Models.Reponses.Film;
 
 namespace Cinema.Web.Controllers
 {
@@ -31,6 +32,17 @@ namespace Cinema.Web.Controllers
             var films = new List<Film>();
             films = ApiHelper<List<Film>>.HttpGetAsync($"{Helper.ApiUrl}api/RoomFilm/Home");
             return Json(new { films });
+        }
+
+        [HttpPost]
+        public JsonResult CreateFilm([FromBody] CreateFilmRequests model)
+        {
+            var result = new SaveFilmResult();
+            result = ApiHelper<SaveFilmResult>.HttpPostAsync(
+                                                    $"{Helper.ApiUrl}api/Film/Create",
+                                                    model
+                                                );
+            return Json(new { result });
         }
     }
 }
