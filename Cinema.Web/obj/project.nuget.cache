@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Ny6tQ1RqSVbHrQE2Hn2s56UdR+dvr7p4wvUXBLzHEvW/orIYsnbN9f7BiYWNVZQqvoTKATlw9gbQS7CGDhmWWA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\User\\Desktop\\API\\Cinema.Web\\Cinema.Web\\Cinema.Web.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
