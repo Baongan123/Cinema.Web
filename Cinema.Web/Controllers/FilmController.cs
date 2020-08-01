@@ -1,5 +1,6 @@
 ﻿using Cinema.Web.Models.CategoryFilm;
 using Cinema.Web.Models.Film;
+using Cinema.Web.Models.Showing;
 using Cinema.Web.Ultilities;
 using Microsoft.AspNetCore.Mvc;
 using System;

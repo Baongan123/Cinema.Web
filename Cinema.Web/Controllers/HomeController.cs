@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Cinema.Web.Models;
 using Cinema.Web.Ultilities;
 using Cinema.Web.Models.Film;
+using Cinema.Web.Models.Showing;
 
 namespace Cinema.Web.Controllers
 {
@@ -20,7 +21,7 @@ namespace Cinema.Web.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult HomeFilm()
         {
             ViewBag.Title = "Cinema NPT";
             return View();
@@ -29,8 +30,9 @@ namespace Cinema.Web.Controllers
         public JsonResult Gets()
         {
             var films = new List<Film>();
-            films = ApiHelper<List<Film>>.HttpGetAsync($"{Helper.ApiUrl}api/RoomFilm/Home");
+            films = ApiHelper<List<Film>>.HttpGetAsync($"{Helper.ApiUrl}api/Home/Film");
             return Json(new { films });
         }
+
     }
 }
