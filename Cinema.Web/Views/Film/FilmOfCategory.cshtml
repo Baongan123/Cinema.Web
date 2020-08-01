@@ -1,37 +1,38 @@
-﻿
+﻿@using Cinema.Web.Models.CategoryFilm;
 @{
     ViewData["Title"] = ViewBag.Title;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    CategoryFilm category = ViewBag.Category != null ? ViewBag.Category as CategoryFilm : new CategoryFilm();
 }
 
 <div class="row">
     <h2 class="title-1 m-b-25"><a href="/">Phim</a></h2>
-    <input hidden id="DepartmentId" value="" />
+    <input hidden id="CategoryId" value="@category.CategoryId" />
     <div class="col-12 mb-3">
-        <a href="javascript:void(0);" class="au-btn au-btn-icon au-btn--green au-btn--small" onclick="employee.openAddEditEmployee()">
+        <a href="javascript:void(0);" class="au-btn au-btn-icon au-btn--green au-btn--small" onclick="film.openAddEditfilm()">
             <i class="zmdi zmdi-plus"></i>Create
         </a>
     </div>
     <div class="table-responsive table--no-card m-b-40">
-        <table id="tbEmployee" class="table table-borderless table-striped table-earning">
+        <table id="tbFilmOfCategory" class="table table-borderless table-striped table-earning">
             <thead>
                 <tr>
-                    <th>FilmId</th>
-                    <th>Film Name</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Image</th>
-                    <th>Created date</th>
-                    <th>Actions</th>
+                    <th>Id</th>
+                    <th>Tên phim</th>
+                    <th>Hình ảnh</th>
+                    <th>Đánh giá</th>
+                    <th>Hành động</th>
                 </tr>
             </thead>
             <tbody>
+               
             </tbody>
         </table>
     </div>
 </div>
 
 <!-- Modal -->
-<div id="addEditEmployee" class="modal fade" data-backdrop="false" role="dialog">
+<div id="addEditFilm" class="modal fade" data-backdrop="false" role="dialog">
     <div class="modal-dialog modal-lg">
         <form id="frmAddEditEmployee">
             <div class="modal-content">
@@ -39,49 +40,56 @@
                     <h4 class="modal-title">Add New Employee</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <input hidden id="EmployeeId" name="EmployeeId">
+                <input hidden id="FilmId" name="FilmId">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-4">
                             <div class="row form-group">
                                 <div class="col-12">
-                                    <img src="/images/noavatar.png" id="Avatar" width="200" height="210" />
-                                    <input type="file" id="FileUpload" class="custom-file" accept="image/*" onchange="employee.uploadAvatar(this)" />
+                                    <img src="/images/noavatar.png" id="Image" width="200" height="210" />
+                                    <input type="file" id="FileUpload" class="custom-file" accept="image/*" onchange="film.uploadImage(this)" />
                                 </div>
                             </div>
                         </div>
                         <div class="col-8">
                             <div class="row form-group">
                                 <div class="col-3">
-                                    <label>Employee Name</label>
+                                    <label>Tên phim</label>
                                 </div>
                                 <div class="col-9">
-                                    <input type="text" id="EmployeeName" name="EmployeeName" class="form-control" data-rule-required="true">
+                                    <input type="text" id="FilmName" name="FilmName" class="form-control" data-rule-required="true">
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <div class="col-3">
-                                    <label>Date of birth</label>
+                                    <label>Tiêu đề</label>
                                 </div>
                                 <div class="col-9">
-                                    <input type="date" id="DoB" name="DoB" class="form-control" data-rule-required="true">
+                                    <input type="text" id="Title" name="Title" class="form-control" data-rule-required="true">
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <div class="col-3">
-                                    <label>Gender</label>
+                                    <label>Thông tin</label>
                                 </div>
                                 <div class="col-9">
-                                    <select class="custom-select" id="Gender" name="Gender">
-                                    </select>
+                                    <input type="text" id="Description" name="Description" class="form-control" data-rule-required="true">
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <div class="col-3">
-                                    <label>Department</label>
+                                    <label>Link Trailer</label>
                                 </div>
                                 <div class="col-9">
-                                    <select class="custom-select" id="Department" name="Department">
+                                    <input type="text" id="Linktrailer" name="Linktrailer" class="form-control" data-rule-required="true">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-3">
+                                    <label>Loại phim</label>
+                                </div>
+                                <div class="col-9">
+                                    <select class="custom-select" id="Category" name="Category">
                                     </select>
                                 </div>
                             </div>
@@ -90,7 +98,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-                    <a href="javascript:;" class="btn btn-danger" onclick="employee.save()">Save</a>
+                    <a href="javascript:;" class="btn btn-danger" onclick="film.create()">Save</a>
                 </div>
             </div>
         </form>

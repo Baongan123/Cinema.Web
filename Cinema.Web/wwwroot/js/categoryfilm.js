@@ -2,17 +2,17 @@
 
 categoryfilm.drawTable = function () {
     $.ajax({
-        url: "/Home/Gets",
+        url: "/CategoryFilm/Gets",
         method: "GET",
         dataType: "json",
         success: function (data) {
-            $('#tbDepart tbody').empty();
+            $('#tbCategoryFilm tbody').empty();
             $.each(data.categories, function (i, v) {
-                $('#tbDepart tbody').append(
+                $('#tbCategoryFilm tbody').append(
                     `<tr>
                         <td>${v.categoryId}</td>
                         <td>${v.categoryName}</td>
-                        <td>${v.count}</td>
+                        <td><a href="/Film/FilmOfCategory/${v.categoryId}" >${v.count}</a></td>
                     </tr>`
                 );
             });
