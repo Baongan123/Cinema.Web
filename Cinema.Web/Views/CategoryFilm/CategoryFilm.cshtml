@@ -1,18 +1,12 @@
 ﻿
 @{
     ViewData["Title"] = ViewBag.Title;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div class="row">
-    <h2 class="title-1 m-b-25"><a href="/">Phim</a></h2>
-    <input hidden id="DepartmentId" value="" />
-    <div class="col-12 mb-3">
-        <a href="javascript:void(0);" class="au-btn au-btn-icon au-btn--green au-btn--small" onclick="employee.openAddEditEmployee()">
-            <i class="zmdi zmdi-plus"></i>Create
-        </a>
-    </div>
     <div class="table-responsive table--no-card m-b-40">
-        <table id="tbEmployee" class="table table-borderless table-striped table-earning">
+        <table id="tbCategoryFilm" class="table table-borderless table-striped table-earning">
             <thead>
                 <tr>
                     <th>Id</th>
