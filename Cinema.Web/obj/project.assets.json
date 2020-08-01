@@ -52,19 +52,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\Desktop\\Cinema\\Cinema.Web\\Cinema.Web\\Cinema.Web.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Desktop\\Đề Tài TN\\Cinema.Web\\Cinema.Web\\Cinema.Web.csproj",
       "projectName": "Cinema.Web",
-      "projectPath": "C:\\Users\\Admin\\Desktop\\Cinema\\Cinema.Web\\Cinema.Web\\Cinema.Web.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\Desktop\\Cinema\\Cinema.Web\\Cinema.Web\\obj\\",
+      "projectPath": "C:\\Users\\User\\Desktop\\Đề Tài TN\\Cinema.Web\\Cinema.Web\\Cinema.Web.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\Desktop\\Đề Tài TN\\Cinema.Web\\Cinema.Web\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
