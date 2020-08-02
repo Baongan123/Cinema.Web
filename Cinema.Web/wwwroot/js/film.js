@@ -94,6 +94,20 @@ film.initCategories = function () {
     });
 }
 
+
+film.drawListCategoryfilm = function () {
+    $.ajax({
+        url: `/Categoryfilm/Gets`,
+        method: "GET",
+        dataType: "json",
+        success: function (data) {
+            $('#listcategoryfilm').empty();
+            $.each(data.categories, function (i, v) {
+                $("#listcategoryfilm").append(`<li><a href="/Film/FilmOfCategory/${v.categoryId}">${v.categoryName}</a></li>`)
+            });
+        }
+    });
+}
 film.reset = function () {
     $('#FilmName').val("");
     $('#filmId').val("0");
@@ -104,6 +118,7 @@ film.reset = function () {
     $('#FileUpload').val('');
 }
 film.init = function () {
+    film.drawListCategoryfilm();
     film.drawTable();
 };
 
