@@ -11,13 +11,9 @@ film.drawTable = function () {
                 $('#tbFilmOfCategory tbody').append(
                     `<tr>
                         <td>${v.filmId}</td>
-                        <td>${v.filmName}</td>
-                        <td><img src="${v.image}" alt="" /></td>
+                        <td><a href="/Film/FilmShow/${v.filmId}" class="item">${v.filmName}</a></td>
+                        <td>${v.title}</td>
                         <td>${v.averageRate}</td>
-                        <td>
-                            <a href="javascript:;" onclick="film.get(${v.filmId})" class="item"><i class="zmdi zmdi-edit"></i></a>
-                            <a href="javascript:;" onclick="film.delete(${v.filmId})" class="item"><i class="zmdi zmdi-delete"></i></a>
-                        </td>
                     </tr>`
                 );
             });
@@ -26,9 +22,13 @@ film.drawTable = function () {
 
 };
 
+//<a href="javascript:;" onclick="film.get(${v.filmId})" class="item"><i class="zmdi zmdi-edit"></i></a>
+//    <a href="javascript:;" onclick="film.delete(${v.filmId})" class="item"><i class="zmdi zmdi-delete"></i></a>
+
+
 film.openAddEditfilm = function () {
     film.reset();
-    $('#addEditFilm').find('.modal-title').text('Add New film');
+    $('#addEditFilm').find('.modal-title').text('Thêm phim');
     film.initCategory();
     $('#addEditFilm').appendTo("body").modal('show');
 };
@@ -76,6 +76,8 @@ film.initCategory = function () {
         dataType: "json",
          success: function (data) {
              $('#Category').empty();
+             $('#action1').empty();
+             $('#action1').append(`<a href="/Film/FilmOfCategory/${data.category.categoryId}"><h3>${data.category.categoryName}</h3></a>`)
              $('#Category').append(`<option value="${data.category.categoryId}">${data.category.categoryName}</option>`)
         }
     });
@@ -94,6 +96,26 @@ film.initCategories = function () {
     });
 }
 
+film.addbutoncreate = function () {
+    $('#buttoncreate').append(`
+        <a href="javascript:void(0);" class="au-btn au-btn-icon au-btn--green au-btn--small" onclick="film.openAddEditfilm()">
+            <i class="zmdi zmdi-plus"></i>Thêm phim
+        </a>`)
+}
+
+film.drawListCategoryfilm = function () {
+    $.ajax({
+        url: `/Categoryfilm/Gets`,
+        method: "GET",
+        dataType: "json",
+        success: function (data) {
+            $('#listcategoryfilm').empty();
+            $.each(data.categories, function (i, v) {
+                $("#listcategoryfilm").append(`<li><a href="/Film/FilmOfCategory/${v.categoryId}">${v.categoryName}</a></li>`)
+            });
+        }
+    });
+}
 film.reset = function () {
     $('#FilmName').val("");
     $('#filmId').val("0");
@@ -104,6 +126,9 @@ film.reset = function () {
     $('#FileUpload').val('');
 }
 film.init = function () {
+    film.drawListCategoryfilm();
+    film.addbutoncreate();
+    film.initCategory();
     film.drawTable();
 };
 
