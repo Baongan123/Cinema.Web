@@ -41,5 +41,18 @@ namespace Cinema.Web.Controllers
                                                 );
             return Json(new { result });
         }
+        public JsonResult Get(int id)
+        {
+            var film = new Film();
+            film = ApiHelper<Film>.HttpGetAsync($"{Helper.ApiUrl}api/Film/Get/{id}");
+            return Json(new { film });
+        }
+        public IActionResult FilmShow(int id)
+        {
+            ViewBag.Title = "Film NPT";
+            ViewBag.FilmId = id;
+            return View();
+        }
+        
     }
 }
