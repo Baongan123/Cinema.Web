@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace Cinema.Web.Models.Film
 {
-    public class CreateFilmResult
+    public class UpdateFilm : CreateFilm
     {
         public int FilmId { get; set; }
-        public string Message { get; set; }
+       
     }
 }

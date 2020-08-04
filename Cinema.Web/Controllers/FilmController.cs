@@ -35,6 +35,7 @@ namespace Cinema.Web.Controllers
         public JsonResult Create([FromBody] CreateFilm model)
         {
             var result = new CreateFilmResult();
+            model.LinkTrailer = model.LinkTrailer.Substring(model.LinkTrailer.IndexOf("=") + 1);
             result = ApiHelper<CreateFilmResult>.HttpPostAsync(
                                                     $"{Helper.ApiUrl}api/Film/Create",
                                                     model
@@ -53,6 +54,19 @@ namespace Cinema.Web.Controllers
             ViewBag.FilmId = id;
             return View();
         }
-        
+        [HttpPost]
+        [Route("/Film/Update/")]
+        public JsonResult Update([FromBody] UpdateFilm model)
+        {
+            var result = new CreateFilmResult();
+            model.LinkTrailer = model.LinkTrailer.Substring(model.LinkTrailer.IndexOf("=") + 1);
+            result = ApiHelper<CreateFilmResult>.HttpPostAsync(
+                                                    $"{Helper.ApiUrl}api/Film/Update",
+                                                    model
+                                                );
+            return Json(new { result });
+        }
+
+
     }
 }
