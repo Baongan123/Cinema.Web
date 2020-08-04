@@ -6,22 +6,15 @@
 }
 
 <div class="row">
-    <h2 class="title-1 m-b-25"><a href="/">Phim</a></h2>
     <input hidden id="CategoryId" value="@category.CategoryId" />
-    <div class="col-12 mb-3">
-        <a href="javascript:void(0);" class="au-btn au-btn-icon au-btn--green au-btn--small" onclick="film.openAddEditfilm()">
-            <i class="zmdi zmdi-plus"></i>Create
-        </a>
-    </div>
     <div class="table-responsive table--no-card m-b-40">
         <table id="tbFilmOfCategory" class="table table-borderless table-striped table-earning">
             <thead>
                 <tr>
                     <th>Id</th>
                     <th>Tên phim</th>
-                    <th>Hình ảnh</th>
+                    <th>Tiêu đề</th>
                     <th>Đánh giá</th>
-                    <th>Hành động</th>
                 </tr>
             </thead>
             <tbody>
@@ -73,7 +66,7 @@
                                     <label>Thông tin</label>
                                 </div>
                                 <div class="col-9">
-                                    <input type="text" id="Description" name="Description" class="form-control" data-rule-required="true">
+                                    <textarea  cols="100" rows="10" style="width:100%" type="text" id="Description" name="Description" class="form-control" data-rule-required="true"></textarea>
                                 </div>
                             </div>
                             <div class="row form-group">
@@ -97,8 +90,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-                    <a href="javascript:;" class="btn btn-danger" onclick="film.create()">Save</a>
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Đóng</button>
+                    <a href="javascript:;" class="btn btn-danger" onclick="film.create()">Lưu</a>
                 </div>
             </div>
         </form>
