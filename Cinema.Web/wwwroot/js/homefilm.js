@@ -1,6 +1,7 @@
 ﻿var film = {} || film;
 var filmId = 0;
 var link = `https://www.youtube.com/embed`;
+var rowseat=["A","B","C","D","E","F","G","H","I","J"]
 
 film.drawFilm = function () {
     $.ajax({
@@ -92,8 +93,63 @@ film.categories = function (cateId) {
 
 
 film.openmodalbookfilm = function (showingid) {
-
+    $.ajax({
+        url: `/showing/seats/${showingid}`,
+        method: "get",
+        datatype: "json",
+        success: function (data) {
+            $('#addbookbody').empty();
+            $("#addbookbody").append(
+                `
+                     <table id="bookseat">
+                        <tr>
+                            <th colspan="1"></th>
+                            <th colspan="10" style="border:2px solid;text-align:center"><h3>Màn hình</h3></th>
+                        </tr>
+                        <tr id="numberseat">
+                            <th width = "50" height = "30" ></th >
+                        </tr>
+                      
+                   </table >
+                `
+            )
+            for (var i = 0; i < 10; i++) {
+                $("#numberseat").append(`<th width = "50" height = "30" style="text-align:center">${i + 1}</th >`)
+                $("#addbookbody").append(`
+                         <tr id="rowseat${i}">
+                            <th width = "50" height = "30" style="text-align:center">${rowseat[i]}</th>
+                        </tr>
+                `)
+                for (var j = 0; j <= 9; j++) {
+                    var index = i * 10 + j;
+                    if (data.seats[index].status == 'false') {
+                        $(`#rowseat${i}`).append(`<td width = "50" height = "30" style="text-align:center">
+                                 <input hidden id='val_seat${data.seats[index].seatId}' value="0" />
+                               <input class="" style="width:30px;height:30px" type='button' id='seat${data.seats[index].seatId}' 
+                                        onclick='film.bookchair(${data.seats[index].seatId})'>
+                            </td>`)
+                    } else {
+                        $(`#rowseat${i}`).append(`<td width = "50" height = "30" style="text-align:center">
+                                <input type='button' style="width:30px;height:30px;background-color:red" value=''>
+                            </td>`)
+                    }
+                }
+            }
+        }
+    });
     $('#bookfilm').modal('show');
+}
+
+film.bookchair = function (seatid) {
+    var seat = `seat${seatid}`;
+    var idhiddenseat = `#val_seat${seatid}`;
+    var seathidden = parseInt($(idhiddenseat).val());
+    if (seathidden % 2 == 0) {
+        document.getElementById(seat).classList.add("custonbutton");
+    } else {
+        $(`#${seat}`).removeClass("custonbutton");
+    }
+    $(idhiddenseat).val(seathidden + 1);
 }
 
 film.init = function () {
