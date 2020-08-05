@@ -56,6 +56,8 @@ film.initCategory = function (id) {
     });
 }
 
+
+
 film.categories = function (cateId) {
     $.ajax({
         url: `/Categoryfilm/Gets`,

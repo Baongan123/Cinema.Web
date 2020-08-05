@@ -26,7 +26,39 @@ namespace Cinema.Web.Controllers
             ViewBag.Title = "Cinema NPT";
             return View();
         }
-
+        public IActionResult Demo()
+        {
+            ViewBag.Title = "Cinema NPT";
+            var films = new List<Film>();
+            films = ApiHelper<List<Film>>.HttpGetAsync($"{Helper.ApiUrl}api/Home/Film");
+            if (films != null)
+            {
+                ViewBag.films = films;
+            }
+            return View();
+        }
+        public IActionResult Film(int id)
+        {
+            ViewBag.Title = "Cinema NPT";
+            ViewBag.FilmId = id;
+            var dayshows = new List<Dayshow>();
+            dayshows = ApiHelper<List<Dayshow>>.HttpGetAsync($"{Helper.ApiUrl}api/Showing/DayShowOfFilm/{id}");
+            ViewBag.dayshows = dayshows;
+            return View();
+        }
+        public JsonResult DayShowOfFilm(int id)
+        {
+            var dayshows = new List<Dayshow>();
+            dayshows = ApiHelper<List<Dayshow>>.HttpGetAsync($"{Helper.ApiUrl}api/Showing/DayShowOfFilm/{id}");
+            return Json(new { dayshows });
+        }
+        [HttpPost]
+        public JsonResult ScreeningFilmOfDate([FromBody] ShowingOfFilmOfDayRequests model)
+        {
+            var timeshows = new List<TimeShow>();
+            timeshows = ApiHelper<List<TimeShow>>.HttpPostAsync($"{Helper.ApiUrl}api/Showing/ScreeningFilmOfDate",model);
+            return Json(new { timeshows });
+        }
         public JsonResult Gets()
         {
             var films = new List<Film>();

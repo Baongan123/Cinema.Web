@@ -17,5 +17,7 @@ namespace Cinema.Web.Controllers
             message = ApiHelper<MessageSuccess>.HttpGetAsync($"{Helper.ApiUrl}api/Showing/DeleteByTime","DELETE");
             return Json(new { message });
         }
+        
+
     }
 }
