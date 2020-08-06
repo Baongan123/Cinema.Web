@@ -24,5 +24,11 @@ namespace Cinema.Web.Controllers
             seats = ApiHelper<List<Seat>>.HttpGetAsync($"{Helper.ApiUrl}api/Showing/Seats/{id}");
             return Json(new { seats });
         }
+        public JsonResult DescriptionShowing(int id)
+        {
+            var descriptionShowing = new DescriptionShowing();
+            descriptionShowing = ApiHelper<DescriptionShowing>.HttpGetAsync($"{Helper.ApiUrl}api/Showing/Description/{id}");
+            return Json(new { descriptionShowing });
+        }
     }
 }
