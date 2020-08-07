@@ -1,26 +1,26 @@
 ﻿var film = {} || film;
 var catId = 0;
-film.drawTable = function () {
-    $.ajax({
-        url: `/Film/Gets/${catId}`,
-        method: "GET",
-        dataType: "json",
-        success: function (data) {
-            $('#tbFilmOfCategory tbody').empty();
-            $.each(data.films, function (i, v) {
-                $('#tbFilmOfCategory tbody').append(
-                    `<tr>
-                        <td>${v.filmId}</td>
-                        <td><a href="/Film/FilmShow/${v.filmId}" class="item">${v.filmName}</a></td>
-                        <td>${v.title}</td>
-                        <td>${v.averageRate}</td>
-                    </tr>`
-                );
-            });
-        }
-    });
+//film.drawTable = function () {
+//    $.ajax({
+//        url: `/Film/Gets/${catId}`,
+//        method: "GET",
+//        dataType: "json",
+//        success: function (data) {
+//            $('#tbFilmOfCategory tbody').empty();
+//            $.each(data.films, function (i, v) {
+//                $('#tbFilmOfCategory tbody').append(
+//                    `<tr>
+//                        <td>${v.filmId}</td>
+//                        <td><a href="/Film/FilmShow/${v.filmId}" class="item">${v.filmName}</a></td>
+//                        <td>${v.title}</td>
+//                        <td>${v.averageRate}</td>
+//                    </tr>`
+//                );
+//            });
+//        }
+//    });
 
-};
+//};
 
 //<a href="javascript:;" onclick="film.get(${v.filmId})" class="item"><i class="zmdi zmdi-edit"></i></a>
 //    <a href="javascript:;" onclick="film.delete(${v.filmId})" class="item"><i class="zmdi zmdi-delete"></i></a>
@@ -65,7 +65,7 @@ film.create = function () {
         success: function (data) {
             $('#addEditFilm').modal('hide');
             bootbox.alert(data.result.message);
-            film.drawTable();
+            location.reload();
         }
     });
 }
@@ -76,8 +76,8 @@ film.initCategory = function () {
         dataType: "json",
          success: function (data) {
              $('#Category').empty();
-             $('#action1').empty();
-             $('#action1').append(`<a href="/Film/FilmOfCategory/${data.category.categoryId}"><h3>${data.category.categoryName}</h3></a>`)
+             $('#menucategory').empty();
+             $('#menucategory').append(`<a href="/Film/FilmOfCategory/${data.category.categoryId}">${data.category.categoryName}</a>`)
              $('#Category').append(`<option value="${data.category.categoryId}">${data.category.categoryName}</option>`)
         }
     });
@@ -125,14 +125,28 @@ film.reset = function () {
     $('#Image').attr('src', '/images/noimage.jpg');
     $('#FileUpload').val('');
 }
+film.drawmenucus = function () {
+    $("#menucus").empty();
+    $("#menucus").append(` <li class="list-inline-item">
+                                <a href="/Categoryfilm/categoryfilm">Thể loại</a>
+                           </li>                
+                            <li class="list-inline-item seprate">
+                                 <span>/</span>
+                            </li>
+                            <li class="list-inline-item" id="menucategory"></li>
+                            <li class="list-inline-item seprate">
+                                      <span>/</span>
+                            </li>
+                            <li class="list-inline-item" id="buttoncreate"></li>`)
+}
 film.init = function () {
     film.drawListCategoryfilm();
-    film.addbutoncreate();
     film.initCategory();
-    film.drawTable();
+    film.drawmenucus();
+    film.addbutoncreate();
 };
 
 $(document).ready(function () {
-    catId = $('#CategoryId').val();
+    catId = parseInt($('#CategoryId').val());
     film.init();
 });

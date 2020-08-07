@@ -21,7 +21,10 @@ namespace Cinema.Web.Controllers
             {
                 ViewBag.Category = category;
             }
-            return View();
+            List<Film> films = new List<Film>();
+            films = ApiHelper<List<Film>>.HttpGetAsync($"{Helper.ApiUrl}api/Films/Category/{id}");
+            ViewBag.CategoryId = id;
+            return View(films);
         }
         [Route("/Film/Gets/{CateId}")]
         public JsonResult Gets(int CateId)
@@ -51,6 +54,12 @@ namespace Cinema.Web.Controllers
         public IActionResult FilmShow(int id)
         {
             ViewBag.Title = "Film NPT";
+            var category = new CategoryFilm();
+            category = ApiHelper<CategoryFilm>.HttpGetAsync($"{Helper.ApiUrl}api/CategoryFilm/GetbyCateId/{id}");
+            if (category != null)
+            {
+                ViewBag.Category = category;
+            }
             ViewBag.FilmId = id;
             return View();
         }
