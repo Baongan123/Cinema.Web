@@ -237,6 +237,7 @@ film.bookOrder = function () {
             $.each(data.comboFoods, function (i, v) {
                 $("#addbookbody").append(
                     `   <div class="col-4 p-2 border-2">
+                        
                         <img style="width:100%;height:100px" src="${v.imageCombo}" />
                            <div> <h6>${v.comboName}</h6> </div>
                                     <div class="row">
@@ -305,6 +306,10 @@ film.drawComboOrder = function (j) {
         success: function (data) {
             var sl = arrNumberOrder[j];
             var gia = data.comboFood.price;
+            var tong = sl * gia;
+            console.log(tong);
+            totalpriceOrder = totalpriceOrder + tong;
+            console.log("total= " + totalpriceOrder);
             $("#desBookOrder").append(`
                           <div class="col-7">
                                 <h6>${data.comboFood.comboName}</h6>
