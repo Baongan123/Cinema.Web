@@ -17,7 +17,15 @@ namespace Cinema.Web.Controllers
             message = ApiHelper<MessageSuccess>.HttpGetAsync($"{Helper.ApiUrl}api/Showing/DeleteByTime","DELETE");
             return Json(new { message });
         }
-        
+
+        [Route("/Showing/DescriptionShowing/{id}")]
+        public JsonResult DescriptionShowing(int id)
+        {
+            var descriptionShowing = new DescriptionShowing();
+            descriptionShowing = ApiHelper<DescriptionShowing>.HttpGetAsync($"{Helper.ApiUrl}api/Showing/Description/{id}");
+            return Json(new { descriptionShowing });
+        }
+        [Route("/showing/seats/{id}")]
         public JsonResult Seats(int id)
         {
             var seats = new List<Seat>();
