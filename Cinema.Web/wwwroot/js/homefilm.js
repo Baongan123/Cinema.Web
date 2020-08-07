@@ -1,6 +1,7 @@
 ﻿var film = {} || film;
 var filmId = 0;
 var link = `https://www.youtube.com/embed`;
+<<<<<<< HEAD
 var rowseat = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
 var arrSeat = [];
 var numberChairOn = 0;
@@ -14,6 +15,8 @@ var saveshowingId = 0;
 var totalpriceTicket = 0;
 var totalpriceOrder = 0;
 var totalprice1Order = 0;
+=======
+>>>>>>> a52cde792d7304556d4ee4e2271c07b457baaed5
 
 film.drawFilm = function () {
     $.ajax({
@@ -122,6 +125,7 @@ film.resetallvalue = function () {
 }
 
 film.openmodalbookfilm = function (showingid) {
+<<<<<<< HEAD
     film.resetallvalue();
     film.descriptionshowing(showingid);
     $.ajax({
@@ -265,6 +269,10 @@ film.nextconfirm = function () {
     document.getElementById("nextXN").classList.add("textCustom");
     film.addButtonNextComfirm();
 
+=======
+
+    $('#bookfilm').modal('show');
+>>>>>>> a52cde792d7304556d4ee4e2271c07b457baaed5
 }
 
 film.addOrder = function (id) {
