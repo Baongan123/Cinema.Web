@@ -1,7 +1,6 @@
 ﻿var film = {} || film;
 var filmId = 0;
 var link = `https://www.youtube.com/embed`;
-<<<<<<< HEAD
 var rowseat = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
 var arrSeat = [];
 var numberChairOn = 0;
@@ -15,8 +14,6 @@ var saveshowingId = 0;
 var totalpriceTicket = 0;
 var totalpriceOrder = 0;
 var totalprice1Order = 0;
-=======
->>>>>>> a52cde792d7304556d4ee4e2271c07b457baaed5
 
 film.drawFilm = function () {
     $.ajax({
@@ -118,6 +115,7 @@ film.resetallvalue = function () {
     totalpriceOrder = 0;
     $("#totalprice").empty();
     $("#desBookTicket").empty();
+    $("#totalPrice").empty();
     $("#desBookOrder").empty();
     $(`#nextFood`).removeClass("textCustom");
     $("#buttonNext").empty();
@@ -125,7 +123,6 @@ film.resetallvalue = function () {
 }
 
 film.openmodalbookfilm = function (showingid) {
-<<<<<<< HEAD
     film.resetallvalue();
     film.descriptionshowing(showingid);
     $.ajax({
@@ -151,7 +148,7 @@ film.openmodalbookfilm = function (showingid) {
             )
             for (var i = 0; i < 10; i++) {
                 $("#numberseat").append(`<th width = "50" height = "30" style="text-align:center">${i + 1}</th >`)
-                $("#addbookbody").append(`
+                $("#bookseat tbody").append(`
                          <tr id="rowseat${i}">
                             <th width = "50" height = "30" style="text-align:center">${rowseat[i]}</th>
                         </tr>
@@ -173,6 +170,7 @@ film.openmodalbookfilm = function (showingid) {
             }
         }
     });
+
     $('#bookfilm').modal('show');
 }
 
@@ -188,7 +186,9 @@ film.descriptionshowing = function (id) {
             numberChairOn = data.descriptionShowing.numberChairOn;
             priceticket = data.descriptionShowing.priceTicket;
             $('#timeshowoffilm').empty()
-            $('#timeshowoffilm').append(`<p>${starttime}     ${dayshow} </p>`);
+            $('#timeshowoffilm').append(`<p>${starttime}  ${dayshow}</p>`);
+            $('#roomname').empty()
+            $('#roomname').append(`<p>${roomname}</p>`);
             $('#priceticket').empty()
             $('#priceticket').append(`<p>${priceticket} VNĐ</p>`);
         }
@@ -215,6 +215,8 @@ film.bookchair = function (seatid) {
         $("#buttonNext").empty();
     }
     totalpriceTicket = arrSeat.length * priceticket;
+    $("#totalPrice").empty();
+    $("#totalPrice").append(`<p>Tổng tiền:  ${totalpriceTicket + totalpriceOrder} VNĐ</p>`)
     $("#desBookTicket").empty();
     $("#desBookTicket").append(`
          <div class="col-7">
@@ -224,7 +226,7 @@ film.bookchair = function (seatid) {
             <h6>${arrSeat.length}</h6>
         </div>
         <div class="col-3 text-center">
-            <h6>${arrSeat.length * priceticket}</h6>
+            <h6 style="float:right">${arrSeat.length * priceticket}</h6>
         </div>
     `);
 
@@ -233,6 +235,7 @@ film.bookchair = function (seatid) {
 film.bookOrder = function () {
     $("#addbookbody").empty();
     document.getElementById("nextFood").classList.add("textCustom");
+    film.addButtonNextCheckFood();
     $.ajax({
         url: `/ComboFood/Gets`,
         method: "GET",
@@ -261,18 +264,25 @@ film.bookOrder = function () {
 
         }
     });
-    film.addButtonNextCheckFood();
 }
 
-film.nextconfirm = function () {
+film.Comfirm = function () {
     $("#addbookbody").empty();
+    $("#addbookbody").append(`
+           <div class="row col-12">
+                   <h4 style="margin-left:35%">Xác nhận thông tin</h4>
+             </div>
+          <div class="col-4">Họ Tên</div>
+          <div class="col-8"><input type="text" style="width:100%" id="namecus" placeholder="Nhập họ tên" /></div>
+         <div class="col-4">Điện thoại</div>
+         <div class="col-8"><input type="number" style="width:100%" id="phonecus" placeholder="Nhập số điện thoại" /></div>
+         <div class="col-4">Email</div>
+        <div class="col-8"><input type="email" style="width:100%" id="emailcus" placeholder="Nhập email" /></div>
+        
+    `)
     document.getElementById("nextXN").classList.add("textCustom");
     film.addButtonNextComfirm();
-
-=======
-
     $('#bookfilm').modal('show');
->>>>>>> a52cde792d7304556d4ee4e2271c07b457baaed5
 }
 
 film.addOrder = function (id) {
@@ -300,11 +310,10 @@ film.addOrder = function (id) {
             film.drawComboOrder(j);
         }
     }
-    console.log(arrOrder);
-    console.log(arrNumberOrder);
-
 }
-
+film.totalprice = function () {
+    console.log(totalpriceOrder + totalpriceTicket)
+}
 film.drawComboOrder = function (j) {
     var cbId = arrOrder[j];
     $.ajax({
@@ -315,9 +324,9 @@ film.drawComboOrder = function (j) {
             var sl = arrNumberOrder[j];
             var gia = data.comboFood.price;
             var tong = sl * gia;
-            console.log(tong);
             totalpriceOrder = totalpriceOrder + tong;
-            console.log("total= " + totalpriceOrder);
+            $("#totalPrice").empty();
+            $("#totalPrice").append(`<p>Tổng tiền:  ${totalpriceTicket + totalpriceOrder} VNĐ</p>`)
             $("#desBookOrder").append(`
                           <div class="col-7">
                                 <h6>${data.comboFood.comboName}</h6>
@@ -327,20 +336,11 @@ film.drawComboOrder = function (j) {
                         </div>
                         <div class="col-3 text-center">
                              <input hidden value="${sl * gia}" id="price${j}"/>
-                            <h6>${sl * gia}</h6>
+                            <h6 style="float:right">${sl * gia}</h6>
                         </div>
              `);
         }
     });
-}
-film.totalprice = function () {
-    if (arrOrder.length > 0) {
-        for (var i = 0; i < arrOrder.length; i++) {
-            var pp = parseInt($(`#price${i}`).val());
-            totalpriceOrder = totalpriceOrder + pp;
-        }
-    }
-    console.log(totalpriceOrder);
 }
 film.addButtonNextCheckSeat = function () {
     $("#buttonNext").empty();
@@ -350,7 +350,7 @@ film.addButtonNextCheckSeat = function () {
 film.addButtonNextCheckFood = function () {
     $("#buttonNext").empty();
     $("#buttonNext").append(`<input class="btn btn-success" style="width:100px;height:30px" 
-                type='button' value="Tiếp theo" onclick='film.totalprice()'>`)
+                type='button' value="Tiếp theo" onclick='film.Comfirm()'>`)
 }
 film.addButtonNextComfirm = function () {
     $("#buttonNext").empty();
