@@ -33,9 +33,19 @@ categoryfilm.drawListCategoryfilm = function () {
         }
     });
 }
+categoryfilm.drawmenucus = function () {
+    $("#menucus").empty();
+    $("#menucus").append(` <li class="list-inline-item">
+                                                <a href="/Categoryfilm/categoryfilm">Thể loại</a>
+                                            </li>
+                                            <li class="list-inline-item seprate">
+                                                <span>/</span>
+                                            </li>`)
+}
 categoryfilm.init = function () {
     categoryfilm.drawListCategoryfilm();
     categoryfilm.drawTable();
+    categoryfilm.drawmenucus();
 };
 
 $(document).ready(function () {
