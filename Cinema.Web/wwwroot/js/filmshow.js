@@ -11,6 +11,8 @@ film.drawFilm = function () {
             $('#Image').attr('src', data.film.image);
             $('#FilmName').empty()
             $('#FilmName').append(`<p>${data.film.filmName} </p>`);
+            $('#namefilmcus').empty()
+            $('#namefilmcus').append(`<p>${data.film.filmName} </p>`);
             $('#Title').empty()
             $('#Title').append(`<p>${data.film.title} </p>`);
             $('#Description').empty()
@@ -46,9 +48,8 @@ film.initCategory = function (id) {
         method: "GET",
         dataType: "json",
         success: function (data) {
-            $('#action1').empty();
-            $('#action1').append(`<a href="/Film/FilmOfCategory/${data.category.categoryId}"><h3>${data.category.categoryName}</h3></a>`)
-
+            $('#menucategory').empty();
+            $('#menucategory').append(`<a href="/Film/FilmOfCategory/${data.category.categoryId}">${data.category.categoryName}</a>`)
 
             $('#CategoryFilm').empty();
             $('#CategoryFilm').append(`<p>${data.category.categoryName} </p>`)
@@ -56,7 +57,19 @@ film.initCategory = function (id) {
     });
 }
 
-
+film.drawListCategoryfilm = function () {
+    $.ajax({
+        url: `/Categoryfilm/Gets`,
+        method: "GET",
+        dataType: "json",
+        success: function (data) {
+            $('#listcategoryfilm').empty();
+            $.each(data.categories, function (i, v) {
+                $("#listcategoryfilm").append(`<li><a href="/Film/FilmOfCategory/${v.categoryId}">${v.categoryName}</a></li>`)
+            });
+        }
+    });
+}
 
 film.categories = function (cateId) {
     $.ajax({
@@ -105,9 +118,24 @@ film.uploadImage = function (input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
-
+film.drawmenucus = function () {
+    $("#menucus").empty();
+    $("#menucus").append(` <li class="list-inline-item">
+                                <a href="/Categoryfilm/categoryfilm">Thể loại</a>
+                           </li>                
+                            <li class="list-inline-item seprate">
+                                 <span>/</span>
+                            </li>
+                            <li class="list-inline-item" id="menucategory"></li>
+                            <li class="list-inline-item seprate">
+                                      <span>/</span>
+                            </li>
+                            <li class="list-inline-item" id="namefilmcus"></li>`)
+}
 film.init = function () {
+    film.drawmenucus();
     film.drawFilm();
+    film.drawListCategoryfilm();
 };
 
 $(document).ready(function () {
