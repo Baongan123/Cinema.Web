@@ -3,6 +3,7 @@ var filmId = 0;
 var link = `https://www.youtube.com/embed`;
 var rowseat = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
 var arrSeat = [];
+var listNameSeat = [];
 var numberChairOn = 0;
 var dayshow = "";
 var starttime = "";
@@ -13,8 +14,51 @@ var arrNumberOrder = [];
 var saveshowingId = 0;
 var totalpriceTicket = 0;
 var totalpriceOrder = 0;
-var totalprice1Order = 0;
+var namecus = "";
+var phone = "";
+var email = "";
+var IsPartSaveSeat = 0;
 
+film.pay = function () {
+    film.saveSeat();
+}
+film.saveSeat = function () {
+    var saveObj = {};
+    saveObj.listseat = arrSeat;
+    saveObj.ListNameSeat = listNameSeat.toString();
+    saveObj.ShowingId = saveshowingId;
+    saveObj.Name = namecus;
+    saveObj.Mail = email;
+    saveObj.PhoneNumber = phone;
+    saveObj.PriceTiket = priceticket;
+    saveObj.listComboId = arrOrder;
+    saveObj.ListCountCombo = arrNumberOrder;
+    saveObj.TotalPriceTiket = totalpriceTicket;
+    saveObj.TotalPriceOrder = totalpriceOrder;
+    $.ajax({
+        url: `/BookFilm/Create/`,
+        method: "POST",
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify(saveObj),
+        success: function (data) {
+            bootbox.alert(data.result.message);
+            film.openmodalbookfilm(saveshowingId);
+        }
+    });
+}
+film.deleteSeat = function (seatid, showingid) {
+    var saveObj = {};
+    saveObj.SeatId = seatid;
+    saveObj.ShowingId = showingid;
+    $.ajax({
+        url: `/ChairOn/DeleteSeat`,
+        method: "POST",
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify(saveObj)
+    });
+}
 film.drawFilm = function () {
     $.ajax({
         url: `/Film/Get/${filmId}`,
@@ -116,6 +160,7 @@ film.resetallvalue = function () {
     arrNumberOrder = [];
     totalpriceTicket = 0;
     totalpriceOrder = 0;
+    listNameSeat = [];
     $("#totalprice").empty();
     $("#desBookTicket").empty();
     $("#totalPrice").empty();
@@ -123,6 +168,7 @@ film.resetallvalue = function () {
     $(`#nextFood`).removeClass("textCustom");
     $("#buttonNext").empty();
     $(`#nextXN`).removeClass("textCustom");
+    $(`#nextTT`).removeClass("textCustom");
 }
 
 film.openmodalbookfilm = function (showingid) {
@@ -150,7 +196,7 @@ film.openmodalbookfilm = function (showingid) {
                 `
             )
             for (var i = 0; i < 10; i++) {
-                $("#numberseat").append(`<th width = "50" height = "30" style="text-align:center">${i + 1}</th >`)
+                $("#numberseat").append(`<th width = "50" height = "30" style="text-align:center">${i}</th >`)
                 $("#bookseat tbody").append(`
                          <tr id="rowseat${i}">
                             <th width = "50" height = "30" style="text-align:center">${rowseat[i]}</th>
@@ -161,7 +207,8 @@ film.openmodalbookfilm = function (showingid) {
                     if (data.seats[index].status == 'false') {
                         $(`#rowseat${i}`).append(`<td width = "50" height = "30" style="text-align:center">
                                  <input hidden id='val_seat${data.seats[index].seatId}' value="0" />
-                               <input class="" style="width:30px;height:30px" type='button' id='seat${data.seats[index].seatId}' 
+                                <input hidden id='name_seat${data.seats[index].seatId}' value="${data.seats[index].seatName}" />
+                               <input class=""style="width:30px;height:30px" type='button' id='seat${data.seats[index].seatId}' 
                                         onclick='film.bookchair(${data.seats[index].seatId})'>
                             </td>`)
                     } else {
@@ -200,24 +247,28 @@ film.descriptionshowing = function (id) {
 
 film.bookchair = function (seatid) {
     var seat = `seat${seatid}`;
-    var idhiddenseat = `#val_seat${seatid}`;
-    var seathidden = parseInt($(idhiddenseat).val());
+    var nameseat = $(`#name_seat${seatid}`).val();
+    var seathidden = parseInt($(`#val_seat${seatid}`).val());
     if (seathidden % 2 == 0) {
         document.getElementById(seat).classList.add("custonbutton");
         arrSeat.push(seatid);
-        // console.log(arrSeat);
+        listNameSeat.push(nameseat);
+        console.log(listNameSeat);
     } else {
         $(`#${seat}`).removeClass("custonbutton");
         arrSeat.remove(seatid);
-        // console.log(arrSeat);
+        listNameSeat.remove(nameseat);
+        console.log(listNameSeat);
     }
-    $(idhiddenseat).val(seathidden + 1);
+    $(`#val_seat${seatid}`).val(seathidden + 1);
     if (arrSeat.length > 0) {
         film.addButtonNextCheckSeat();
     } else {
         $("#buttonNext").empty();
     }
     totalpriceTicket = arrSeat.length * priceticket;
+    $("#seatname").empty();
+    $("#seatname").append(`<p>  ${listNameSeat.toString()}</p>`)
     $("#totalPrice").empty();
     $("#totalPrice").append(`<p>Tổng tiền:  ${totalpriceTicket + totalpriceOrder} VNĐ</p>`)
     $("#desBookTicket").empty();
@@ -235,7 +286,7 @@ film.bookchair = function (seatid) {
 
 }
 
-film.bookOrder = function () {
+film.bookSeat = function () {
     $("#addbookbody").empty();
     document.getElementById("nextFood").classList.add("textCustom");
     film.addButtonNextCheckFood();
@@ -269,18 +320,27 @@ film.bookOrder = function () {
     });
 }
 
-film.Comfirm = function () {
+film.bookOrder = function () {
     $("#addbookbody").empty();
     $("#addbookbody").append(`
            <div class="row col-12">
                    <h4 style="margin-left:35%">Xác nhận thông tin</h4>
              </div>
           <div class="col-4">Họ Tên</div>
-          <div class="col-8"><input type="text" style="width:100%" id="namecus" placeholder="Nhập họ tên" /></div>
+          <div class="col-8">
+                <input type="text" style="width:100%" id="namecus" placeholder="Nhập họ tên" />
+                <p class="d-none" id="validatename" style="color:red">Vui lòng nhập họ tên!</p>
+           </div>
          <div class="col-4">Điện thoại</div>
-         <div class="col-8"><input type="number" style="width:100%" id="phonecus" placeholder="Nhập số điện thoại" /></div>
+         <div class="col-8">    
+                <input type="number" style="width:100%" id="phonecus" placeholder="Nhập số điện thoại" />
+                 <p class="d-none" id="validatephone" style="color:red">Vui lòng nhập số điện thoại!</p>
+          </div>
          <div class="col-4">Email</div>
-        <div class="col-8"><input type="email" style="width:100%" id="emailcus" placeholder="Nhập email" /></div>
+        <div class="col-8">
+                <input type="email" style="width:100%" id="emailcus" placeholder="Nhập email" />
+                  <p class="d-none" id="validateemail" style="color:red">Vui lòng nhập email!</p>
+        </div>
         
     `)
     document.getElementById("nextXN").classList.add("textCustom");
@@ -345,20 +405,60 @@ film.drawComboOrder = function (j) {
         }
     });
 }
+film.comfirm = function () {
+    namecus = $("#namecus").val();
+    email = $("#emailcus").val();
+    phone = $("#phonecus").val();
+    if (namecus=="") {
+        $(`#validatename`).removeClass("d-none");
+    }
+    if (email == "") {
+        $(`#validateemail`).removeClass("d-none");
+    }
+    if (phone == "") {
+        $(`#validatephone`).removeClass("d-none");
+    }
+    if (namecus != "" && phone != "" && email != "") {
+        document.getElementById("nextTT").classList.add("textCustom");
+        $("#addbookbody").empty();
+        $("#addbookbody").append(`
+           <div class="row col-12">
+                   <h4 style="margin-left:35%">Hình thức thanh toán</h4>
+             </div>
+          <div class="col-4">
+                     <img src="/images/momo-logo-300x300.jpg" style="width:100%;height:100%"/>
+           </div>
+          <div class="col-8">
+                <p>Ví điện tử MOMO</p>
+           </div>
+         <div class="col-4">
+                  <img src="/images/agiletechvietnam-zalopay.png"  style="width:100%;height:100%"/>
+        </div>
+         <div class="col-8">   
+                <p>Ví điện tử ZALO pay</p>
+          </div>
+        
+    `)
+        document.getElementB
+        $("#buttonNext").empty();
+        $("#buttonNext").append(`<input class="btn btn-success" style="width:100px;height:30px" 
+                type='button' value="Thanh toán" onclick='film.pay()'>`)
+    }
+}
 film.addButtonNextCheckSeat = function () {
     $("#buttonNext").empty();
     $("#buttonNext").append(`<input class="btn btn-success" style="width:100px;height:30px" 
-                type='button' value="Tiếp theo" onclick='film.bookOrder()'>`)
+                type='button' value="Tiếp theo" onclick='film.bookSeat()'>`)
 }
 film.addButtonNextCheckFood = function () {
     $("#buttonNext").empty();
     $("#buttonNext").append(`<input class="btn btn-success" style="width:100px;height:30px" 
-                type='button' value="Tiếp theo" onclick='film.Comfirm()'>`)
+                type='button' value="Tiếp theo" onclick='film.bookOrder()'>`)
 }
 film.addButtonNextComfirm = function () {
     $("#buttonNext").empty();
     $("#buttonNext").append(`<input class="btn btn-success" style="width:100px;height:30px" 
-                type='button' value="Tiếp theo" onclick='film.totalprice()'>`)
+                type='button' value="Tiếp theo" onclick='film.comfirm()'>`)
 }
 Array.prototype.remove = function () {
     var what, a = arguments, L = a.length, ax;
