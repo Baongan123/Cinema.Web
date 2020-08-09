@@ -64,7 +64,7 @@ film.showing = function (day, id) {
             var i = 0;
             $(`#timeshow_${id}`).empty();
             for (i; i < data.timeshows.length; i++) {
-                $(`#timeshow_${id}`).append(`<a href="javascript:void(0);" onclick="film.openmodalbookfilm(${data.timeshows[i].showingId})"  class="btn btn-outline-primary ml-5"> ${data.timeshows[i].startTime}</a>`)
+   
 
                 $(`#timeshow_${id}`).append(`<a href="javascript:void(0);" 
                                 onclick="film.openmodalbookfilm(${data.timeshows[i].showingId})" 
