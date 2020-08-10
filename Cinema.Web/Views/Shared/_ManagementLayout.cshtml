@@ -30,10 +30,10 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar2">
             <div class="logo">
-                <a href="#">
-                    <img src="/images/logo.jpg" alt="Cinema_NPTAdmin" class="img-profile rounded-circle" width="50" />
+                <a class="nav-link" asp-controller="Home" asp-action="demo">
+                <img src="/images/logo.jpg" alt="Cinema_NPTAdmin" class="img-profile rounded-circle" width="50" />
                 </a>
-                <a href="#">
+                <a class="nav-link" asp-controller="Home" asp-action="demo">
                     <span class="bot-line"></span>NPTAdmin
                 </a>
             </div>
@@ -49,17 +49,13 @@
                     <ul class="list-unstyled navbar__list">
                         <li class="active has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard
+                                <i class="fas fa-tachometer-alt"></i>Thể Loại Phim
                                 <span class="arrow">
                                     <i class="fas fa-angle-down"></i>
                                 </span>
                             </a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="index.html">
-                                        <i class="fas fa-tachometer-alt"></i>Dashboard 1
-                                    </a>
-                                </li>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list" id="listcategoryfilm">
+                                
                             </ul>
                         </li>
                         <li>

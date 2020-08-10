@@ -103,8 +103,9 @@ film.update = function () {
         data: JSON.stringify(saveObj),
         success: function (data) {
             $('#addEditFilm').modal('hide');
-            bootbox.alert(data.result.message);
             film.drawFilm();
+            bootbox.alert(data.result.message);
+            
         }
     });
 
