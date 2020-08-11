@@ -110,7 +110,7 @@ film.showing = function (day, id) {
             for (i; i < data.timeshows.length; i++) {
    
 
-                $(`#timeshow_${id}`).append(`<a href="javascript:void(0);" 
+                $(`#timeshow_${id}`).append(`<a href="javascript:;" 
                                 onclick="film.openmodalbookfilm(${data.timeshows[i].showingId})" 
                                 class="btn btn-outline-primary ml-5"> ${data.timeshows[i].startTime}</a>`)
 
@@ -221,7 +221,7 @@ film.openmodalbookfilm = function (showingid) {
         }
     });
 
-    $('#bookfilm').modal('show');
+    $('#bookfilm').modal("show");
 }
 
 film.descriptionshowing = function (id) {
