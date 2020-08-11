@@ -67,13 +67,13 @@ film.drawFilm = function () {
         success: function (data) {
             $('#Image').attr('src', data.film.image);
             $('#FilmName').empty()
-            $('#FilmName').append(`<p>${data.film.filmName} </p>`);
+            $('#FilmName').append(`<p class="textcolorwhite">${data.film.filmName} </p>`);
             $('#FilmNameBK').empty()
-            $('#FilmNameBK').append(`<p>${data.film.filmName} </p>`);
+            $('#FilmNameBK').append(`<p class="textcolorwhite">${data.film.filmName} </p>`);
             $('#Title').empty()
-            $('#Title').append(`<p>${data.film.title} </p>`);
+            $('#Title').append(`<p class="textcolorwhite">${data.film.title} </p>`);
             $('#Description').empty();
-            $('#Description').append(`<p>${data.film.description} </p>`);
+            $('#Description').append(`<p class="textcolorwhite">${data.film.description} </p>`);
             $('#trailer').attr('src', `${link}/${data.film.linkTrailer}`);
             film.initCategory(data.film.categoryId);
 
@@ -110,7 +110,7 @@ film.showing = function (day, id) {
             for (i; i < data.timeshows.length; i++) {
    
 
-                $(`#timeshow_${id}`).append(`<a href="javascript:void(0);" 
+                $(`#timeshow_${id}`).append(`<a href="javascript:;" 
                                 onclick="film.openmodalbookfilm(${data.timeshows[i].showingId})" 
                                 class="btn btn-outline-primary ml-5"> ${data.timeshows[i].startTime}</a>`)
 
@@ -131,7 +131,7 @@ film.initCategory = function (id) {
         dataType: "json",
         success: function (data) {
             $('#CategoryFilm').empty();
-            $('#CategoryFilm').append(`<p>${data.category.categoryName} </p>`)
+            $('#CategoryFilm').append(`<p class="textcolorwhite">${data.category.categoryName} </p>`)
         }
     });
 }
@@ -221,7 +221,7 @@ film.openmodalbookfilm = function (showingid) {
         }
     });
 
-    $('#bookfilm').modal('show');
+    $('#bookfilm').modal("show");
 }
 
 film.descriptionshowing = function (id) {

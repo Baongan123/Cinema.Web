@@ -4,6 +4,8 @@
     <title>Neos &mdash; Website Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="images/icon_title.png" type="image/png">
+    <link href="~/Styles/style.css" type="text/css" rel="stylesheet" />
 
 
     <link href="https://fonts.googleapis.com/css?family=Oswald:400,700|Work+Sans:300,400,700" rel="stylesheet">
@@ -25,8 +27,43 @@
 <body>
 
     <div class="site-wrap">
+        <header>
+            <div class="top_header">
+                <div class="top">
+                    <div class="account">
+                        <a href="#">ĐĂNG NHẬP</a> |
+                        <a href="#">ĐĂNG KÝ</a>
+                    </div>
+                </div><!--top-->
+            </div><!--top_header-->
+            <div class="content_header">
+                <div class="content">
+                    <div class="logo">
+                        <a href="index.html"><img src="/images/logonptcinema.jpg" style="margin-top:-22px" /></a>
+                    </div><!--logo-->
+                    <div class="menu" style="margin-top:-16px" >
+                        <nav>
+                            <ul>
+                                <li style="background-color: #da280b; color: #FFF;">
+                                    <a asp-controller="Home" asp-action="demo" style="color: #FFF; ">TRANG CHỦ</a>
+                                </li>
+                                <li>
+                                    <a href="The_Loai.html">PHIM THEO NGÀY</a>
+                                </li>
+                                <li>
+                                    <a href="Tin_Tuc.html">PHIM THEO</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="CategoryFilm" asp-action="Categoryfilm">QUẢN LÝ</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div><!--menu-->
+                </div><!--content-->
+            </div><!--content_header-->
+        </header>
 
-        <div class="site-navbar-wrap js-site-navbar bg-white">
+        @*<div class="site-navbar-wrap js-site-navbar bg-white">
 
             <div class="container">
                 <nav class="container navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -56,7 +93,7 @@
 
                 </nav>
             </div>
-        </div>
+        </div>*@
 
         @RenderBody()
 
@@ -151,6 +188,8 @@
     <script src="~/vendor/bootbox/bootbox.js"></script>
     <script src="~/js/aos.js"></script>
     <script src="~/js/main2.js"></script>
+    <script src="~/Scripts/scripts.js"></script>
+
 
     @RenderSection("Scripts", required: false)
 </body>
