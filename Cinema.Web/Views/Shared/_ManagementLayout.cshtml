@@ -23,6 +23,7 @@
 
     <!-- Main CSS-->
     <link href="~/css/theme.css" rel="stylesheet" media="all" />
+    <link href="~/css/mystyle.css" rel="stylesheet" />
 </head>
 <body class="animsition">
     @* bodyyyyy *@
@@ -31,7 +32,7 @@
         <aside class="menu-sidebar2">
             <div class="logo">
                 <a class="nav-link" asp-controller="Home" asp-action="demo">
-                <img src="/images/logo.jpg" alt="Cinema_NPTAdmin" class="img-profile rounded-circle" width="50" />
+                    <img src="/images/logo.jpg" alt="Cinema_NPTAdmin" class="img-profile rounded-circle" width="50" />
                 </a>
                 <a class="nav-link" asp-controller="Home" asp-action="demo">
                     <span class="bot-line"></span>NPTAdmin
@@ -47,6 +48,11 @@
                 </div>
                 <nav class="navbar-sidebar2">
                     <ul class="list-unstyled navbar__list">
+                        <li>
+                            <a href="/management/index">
+                                <i class="fa fa-home"></i>Trang chủ
+                            </a>
+                        </li>
                         <li class="active has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Thể Loại Phim
@@ -54,54 +60,33 @@
                                     <i class="fas fa-angle-down"></i>
                                 </span>
                             </a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list" id="listcategoryfilm">
-                                
+                            <ul class="list-unstyled navbar__sub-list js-sub-list" id="listcategoryfilm1">
                             </ul>
                         </li>
                         <li>
                             <a href="#">
-                                <i class="fas fa-shopping-basket"></i>eCommerce
+                                <i class="fas fa-shopping-basket"></i>Xuất chiếu
                             </a>
                         </li>
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="fas fa-trophy"></i>Features
-                                <span class="arrow">
-                                    <i class="fas fa-angle-down"></i>
-                                </span>
+                                <i class="fas fa-trophy"></i>Đồ ăn
                             </a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="table.html">
-                                        <i class="fas fa-table"></i>Tables
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="fas fa-copy"></i>Pages
-                                <span class="arrow">
-                                    <i class="fas fa-angle-down"></i>
-                                </span>
+                                <i class="fas fa-copy"></i>Nhân Viên
                             </a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="login.html">
-                                        <i class="fas fa-sign-in-alt"></i>Login
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="register.html">
-                                        <i class="fas fa-user"></i>Register
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="forget-pass.html">
-                                        <i class="fas fa-unlock-alt"></i>Forget Password
-                                    </a>
-                                </li>
-                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-copy"></i>Khách hàng
+                            </a>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-copy"></i>Doanh thu
+                            </a>
                         </li>
                     </ul>
                 </nav>
@@ -172,6 +157,11 @@
                     </div>
                     <nav class="navbar-sidebar2">
                         <ul class="list-unstyled navbar__list">
+                            <li>
+                                <a href="/management/index">
+                                    <i class="fa fa-home"></i>Trang chủ
+                                </a>
+                            </li>
                             <li class="active has-sub">
                                 <a class="js-arrow" href="#">
                                     <i class="fas fa-tachometer-alt"></i>Thể Loại Phim
@@ -179,73 +169,33 @@
                                         <i class="fas fa-angle-down"></i>
                                     </span>
                                 </a>
-                                <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                    <li>
-                                        <a href="index.html">
-                                            <i class="fas fa-tachometer-alt"></i>Dashboard 1
-                                        </a>
-                                    </li>
+                                <ul class="list-unstyled navbar__sub-list js-sub-list" id="listcategoryfilm2">
                                 </ul>
                             </li>
                             <li>
                                 <a href="#">
-                                    <i class="fas fa-shopping-basket"></i>eCommerce
+                                    <i class="fas fa-shopping-basket"></i>Xuất chiếu
                                 </a>
                             </li>
                             <li class="has-sub">
                                 <a class="js-arrow" href="#">
-                                    <i class="fas fa-trophy"></i>Features
-                                    <span class="arrow">
-                                        <i class="fas fa-angle-down"></i>
-                                    </span>
+                                    <i class="fas fa-trophy"></i>Đồ ăn
                                 </a>
-                                <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                    <li>
-                                        <a href="table.html">
-                                            <i class="fas fa-table"></i>Tables
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="form.html">
-                                            <i class="far fa-check-square"></i>Forms
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="calendar.html">
-                                            <i class="fas fa-calendar-alt"></i>Calendar
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="map.html">
-                                            <i class="fas fa-map-marker-alt"></i>Maps
-                                        </a>
-                                    </li>
-                                </ul>
                             </li>
                             <li class="has-sub">
                                 <a class="js-arrow" href="#">
-                                    <i class="fas fa-copy"></i>Pages
-                                    <span class="arrow">
-                                        <i class="fas fa-angle-down"></i>
-                                    </span>
+                                    <i class="fas fa-copy"></i>Nhân Viên
                                 </a>
-                                <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                    <li>
-                                        <a href="login.html">
-                                            <i class="fas fa-sign-in-alt"></i>Login
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="register.html">
-                                            <i class="fas fa-user"></i>Register
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="forget-pass.html">
-                                            <i class="fas fa-unlock-alt"></i>Forget Password
-                                        </a>
-                                    </li>
-                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a class="js-arrow" href="#">
+                                    <i class="fas fa-copy"></i>Khách hàng
+                                </a>
+                            </li>
+                            <li class="has-sub">
+                                <a class="js-arrow" href="#">
+                                    <i class="fas fa-copy"></i>Doanh thu
+                                </a>
                             </li>
                         </ul>
                     </nav>
@@ -258,9 +208,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="au-breadcrumb-content">
-                                    <div class="au-breadcrumb-left">                                   
+                                    <div class="au-breadcrumb-left">
                                         <ul class="list-unstyled list-inline au-breadcrumb__list" id="menucus">
-                                           
                                         </ul>
                                     </div>
                                 </div>
@@ -281,6 +230,77 @@
     </div>
     @* end bodyyyy *@
 
+    <!-- Modal -->
+    <div id="addEditFilm" class="modal fade" data-backdrop="false" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <form id="frmAddEditEmployee">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add New Employee</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <input hidden id="FilmId" name="FilmId">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="row form-group">
+                                    <div class="col-12">
+                                        <img src="/images/noimage.jpg" id="Image" width="200" height="210" />
+                                        <input type="file" id="FileUpload" class="custom-file" accept="image/*" onchange="film.uploadImage(this)" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="row form-group">
+                                    <div class="col-3">
+                                        <label>Tên phim</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text" id="FilmName" name="FilmName" class="form-control" data-rule-required="true">
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3">
+                                        <label>Tiêu đề</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text" id="Title" name="Title" class="form-control" data-rule-required="true">
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3">
+                                        <label>Thông tin</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <textarea cols="100" rows="10" style="width:100%" type="text" id="Description" name="Description" class="form-control" data-rule-required="true"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3">
+                                        <label>Link Trailer</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text" id="Linktrailer" name="Linktrailer" class="form-control" data-rule-required="true">
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3">
+                                        <label>Loại phim</label>
+                                    </div>
+                                    <div class="col-9" id="Category" name="Category">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info" data-dismiss="modal">Đóng</button>
+                        <a href="javascript:;" class="btn btn-danger" onclick="film.create()">Lưu</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <!-- Jquery JS-->
     <script src="~/vendor/jquery-3.2.1.min.js"></script>

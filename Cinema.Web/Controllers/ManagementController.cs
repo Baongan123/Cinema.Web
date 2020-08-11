@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Cinema.Web.Models.Room;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,9 @@ namespace Cinema.Web.Controllers
 {
     public class ManagementController : Controller
     {
-
+           public IActionResult Index()
+        {
+            return View();
+        }
     }
 }
