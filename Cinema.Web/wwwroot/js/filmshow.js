@@ -37,7 +37,7 @@ film.get = function () {
             $('#DescriptionUd').val(data.film.description);
             $('#LinktrailerUd').val(data.film.linkTrailer);
             film.categories(data.film.categoryId)
-            $('#addEditFilm').appendTo("body").modal('show');
+            $('#EditFilm').appendTo("body").modal('show');
 
         }
     });
@@ -49,7 +49,7 @@ film.initCategory = function (id) {
         dataType: "json",
         success: function (data) {
             $('#menucategory').empty();
-            $('#menucategory').append(`<a href="/Film/FilmOfCategory/${data.category.categoryId}">${data.category.categoryName}</a>`)
+            $('#menucategory').append(`<a href="/Film/FilmNowShowing/${data.category.categoryId}">${data.category.categoryName}</a>`)
 
             $('#CategoryFilm').empty();
             $('#CategoryFilm').append(`<p>${data.category.categoryName} </p>`)
@@ -65,7 +65,7 @@ film.drawListCategoryfilm = function () {
         success: function (data) {
             $('#listcategoryfilm').empty();
             $.each(data.categories, function (i, v) {
-                $("#listcategoryfilm").append(`<li><a href="/Film/FilmOfCategory/${v.categoryId}">${v.categoryName}</a></li>`)
+                $("#listcategoryfilm").append(`<li><a href="/Film/FilmNowShowing/${v.categoryId}">${v.categoryName}</a></li>`)
             });
         }
     });
@@ -102,7 +102,7 @@ film.update = function () {
         contentType: "application/json",
         data: JSON.stringify(saveObj),
         success: function (data) {
-            $('#addEditFilm').modal('hide');
+            $('#EditFilm').modal('hide');
             film.drawFilm();
             bootbox.alert(data.result.message);
             
