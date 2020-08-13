@@ -37,6 +37,7 @@ namespace Cinema.Web.Controllers
             }
             return View();
         }
+        
         public IActionResult Film(int id)
         {
             ViewBag.Title = "Cinema NPT";

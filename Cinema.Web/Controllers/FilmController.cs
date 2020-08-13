@@ -111,5 +111,17 @@ namespace Cinema.Web.Controllers
             return Json(new { films });
         }
 
+        public IActionResult Search()
+        {
+            ViewBag.Title = "Cinema NPT";
+            return View();
+        }
+        [HttpPost]
+        public JsonResult Searchfilm([FromBody] KeySearch model)
+        {
+            var search = new List<Film>();
+            search = ApiHelper<List<Film>>.HttpPostAsync($"{Helper.ApiUrl}api/Film/Searchfilm",model);
+            return Json(new { search });
+        }
     }
 }
