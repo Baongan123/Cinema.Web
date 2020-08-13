@@ -104,6 +104,12 @@ namespace Cinema.Web.Controllers
             return Json(new { result });
         }
 
+        public JsonResult GetsFilmTop()
+        {
+            var films= new List<Film>();
+            films = ApiHelper<List<Film>>.HttpGetAsync($"{Helper.ApiUrl}api/film/GetfilmsByrate");
+            return Json(new { films });
+        }
 
     }
 }
