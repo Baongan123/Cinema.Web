@@ -1,33 +1,78 @@
 ﻿var home = {} || home;
 
-//home.drawTable = function () {
-//    $.ajax({
-//        url: "/Home/Gets",
-//        method: "GET",
-//        dataType: "json",
-//        success: function (data) {
-//            $('#homefilm').empty();
-//            $.each(data.films, function (i, v) {
-//                $('#homefilm').append(
-//                    `
-//                  <div class="col-md-6 col-lg-3 mb-5 mb-lg-5 ">
-//                                <div class="ftco-media-1">
-//                                    <div class="ftco-media-1-inner">
-//                                        <a href="property-single.html" class="d-inline-block mb-4"><img src="${v.image}" alt="${v.filmName}" class="img-fluid"></a>
-//                                        <div class="ftco-media-details">
-//                                            <h3>${v.filmName}</h3>
-//                                            <p>${v.title}</p>
-//                                        </div>
+home.drawFilmTop = function () {
+    $.ajax({
+        url: "/Film/GetsFilmTop",
+        method: "GET",
+        dataType: "json",
+        success: function (data) {
+            $('#filmsbyrate').empty();
+            $.each(data.films, function (i, v) {
+                $('#filmsbyrate').append(
+                    `
+                  <div class="col-md-3">
+                          <div>
+                               <a href="/Home/Film/${v.filmId}" style="width:100%;height:400px" class="d-inline-block mb-4">
+                                    <img src="${v.image}" style="width:100%;height:400px;padding:10px 15px;border-radius:20px" alt="${v.filmName}" class="rangoliPic">
+                                </a>
+                            </div>
+                            <div class="ftco-media-details">
+                                            <h3 style="text-align:center;color:white">${v.filmName}</h3>
+                                            <p style="text-align:center;color:#007bff">${v.title}</p>
+                              </div>
 
-//                                    </div>
-//                                </div>
-//                    </div>`
-//                );
-//            });
-//        }
-//    });
+                                  
+                    </div>`
+                );
+            });
+        }
+    });
 
-//};
+};
+home.drawSearch = function () {
+    var keyObj = {};
+    keyObj.Key = $("#keysearch").val();
+    if (keyObj.Key != "") {
+        $('#homebody').empty()
+        $('#homebody').append(`<section style="padding-top:30px">
+                                    <h3 style="text-align:center;color:#007bff">Kết quả tìm kiếm<h3>
+                                    <div class="row" id="searchid">
+                                    </div>
+                                </section>`)
+        $.ajax({
+            url: "/Film/Searchfilm",
+            method: "POST",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(keyObj),
+            success: function (data) {
+                $('#searchid').empty();
+                $.each(data.search, function (i, v) {
+                    $('#searchid').append(
+                        `
+                  <div class="col-md-4">
+                          <div>
+                               <a href="/Home/Film/${v.filmId}" style="width:100%;height:400px" class="d-inline-block mb-4">
+                                    <img src="${v.image}" style="width:100%;height:400px;padding:10px 15px;border-radius:20px" alt="${v.filmName}" class="rangoliPic">
+                                </a>
+                            </div>
+                            <div class="ftco-media-details">
+                                            <h3 style="text-align:center;color:white">${v.filmName}</h3>
+                                            <p style="text-align:center;color:#007bff">${v.title}</p>
+                              </div>
+
+                                  
+                    </div>`
+                    );
+                });
+            }
+        });
+    } else {
+        location.reload();
+    }
+    
+
+};
 home.deleteshowingbytime = function () {
     $.ajax({
         url: `/Showing/DeleteByTime`,
@@ -39,6 +84,7 @@ home.deleteshowingbytime = function () {
 }
 home.init = function () {
     home.deleteshowingbytime();
+    home.drawFilmTop();
 };
 
 $(document).ready(function () {
