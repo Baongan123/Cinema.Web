@@ -9,6 +9,9 @@
 *.user
 *.userosscache
 *.sln.docstates
+bin/Debug/netcoreapp3.1
+obj/Debug/netcoreapp3.1
+.vs/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
