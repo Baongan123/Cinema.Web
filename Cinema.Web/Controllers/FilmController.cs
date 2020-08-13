@@ -111,6 +111,9 @@ namespace Cinema.Web.Controllers
             return Json(new { films });
         }
 
+<<<<<<< HEAD
+
+=======
         public IActionResult Search()
         {
             ViewBag.Title = "Cinema NPT";
@@ -123,5 +126,6 @@ namespace Cinema.Web.Controllers
             search = ApiHelper<List<Film>>.HttpPostAsync($"{Helper.ApiUrl}api/Film/Searchfilm",model);
             return Json(new { search });
         }
+>>>>>>> Deverloper
     }
 }
