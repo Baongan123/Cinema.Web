@@ -13,9 +13,9 @@ function load(){
 function output(l){
 	document.getElementById("img_film").src=A[l].src;
 	document.getElementById("name").innerHTML=S[l];
-	/*$(document).ready(function() {
-		$(#img_film).slideUp()			
-	});  */
+	//$(document).ready(function() {
+	//	$(#img_film).slideUp()			
+	//});
 	
 }	
 function next(){
