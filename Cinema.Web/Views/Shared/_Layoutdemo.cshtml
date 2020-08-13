@@ -23,6 +23,7 @@
     <link href="~/css/aos.css" rel="stylesheet" />
     <link href="~/css/style2.css" rel="stylesheet" />
     <link href="~/css/text.css" rel="stylesheet" />
+    <link href="~/css/search.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 
@@ -46,10 +47,11 @@
                 
            
             <div class="content_header">
+                
                 <form name="timkiem">
                     <div class="form-group form-inline">
-                        <input placeholder="Nhập từ khoá..." type="text" name="search" class="form-control form-inline" />
-                        <input type="submit" name="submit" value="Tìm Kiếm" class="form-control" />
+                        <input style="border-radius:40px;background-color:aqua" placeholder="Nhập từ khoá..." type="text" name="search" oninput="home.drawSearch()" id="keysearch" class="form-control form-inline" />
+                        <i class="fas fa-search"></i>
                     </div>
                 </form>
                 <div class="content">

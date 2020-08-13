@@ -199,7 +199,6 @@ C:/Users/User/Desktop/Cinema/Cinema.Web/Cinema.Web/obj/Debug/netcoreapp3.1/Cinem
 /Users/phanbaphap/Desktop/git/Cinema.Web/Cinema.Web/obj/Debug/netcoreapp3.1/Razor/Views/Home/Film.cshtml.g.cs
 /Users/phanbaphap/Desktop/git/Cinema.Web/Cinema.Web/obj/Debug/netcoreapp3.1/Razor/Views/Home/HomeFilm.cshtml.g.cs
 /Users/phanbaphap/Desktop/git/Cinema.Web/Cinema.Web/obj/Debug/netcoreapp3.1/Razor/Views/Home/HomeViewFilm.cshtml.g.cs
-/Users/phanbaphap/Desktop/git/Cinema.Web/Cinema.Web/obj/Debug/netcoreapp3.1/Razor/Views/Home/Index.cshtml.g.cs
 /Users/phanbaphap/Desktop/git/Cinema.Web/Cinema.Web/obj/Debug/netcoreapp3.1/Razor/Views/Home/Privacy.cshtml.g.cs
 /Users/phanbaphap/Desktop/git/Cinema.Web/Cinema.Web/obj/Debug/netcoreapp3.1/Razor/Views/Management/Index.cshtml.g.cs
 /Users/phanbaphap/Desktop/git/Cinema.Web/Cinema.Web/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Error.cshtml.g.cs
