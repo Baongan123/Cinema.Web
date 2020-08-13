@@ -7,6 +7,6 @@ namespace Cinema.Web.Ultilities
 {
     public class Helper
     {
-        public static string ApiUrl = @"https://localhost:44394/";
+        public static string ApiUrl = @"https://localhost:5001/";
     }
 }
