@@ -12,7 +12,9 @@ categoryfilm.drawTable = function () {
                     `<tr>
                         <td>${v.categoryId}</td>
                         <td>${v.categoryName}</td>
-                        <td><a href="/Film/FilmNowShowing/${v.categoryId}" >${v.count}</a></td>
+                        <td class="text-center"><a href="/Film/FilmNowShowing/${v.categoryId}" >${v.countNowShowing}</a></td>
+                         <td class="text-center"><a href="/Film/FilmUpComing/${v.categoryId}" >${v.countUpcoming}</a></td>
+                         <td class="text-center"><a href="/Film/FilmScreened/${v.categoryId}" >${v.countScreened}</a></td>
                     </tr>`
                 );
             });

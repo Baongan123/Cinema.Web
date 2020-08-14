@@ -1,44 +1,44 @@
 /*Begin Web Home*/
 
 /**/
-/*liveshow header*/
-var A=[],i=1,n=3;	
-function load(){
-	var j;	
-	for ( j = 1 ; j <= n ; j++){
-		A[j]=new Image();
-		A[j].src="images/liveshow/"+j+".jpg";
-	}
-}	
-function output(l){
-	document.getElementById("img_film").src=A[l].src;
-	document.getElementById("name").innerHTML=S[l];
-	//$(document).ready(function() {
-	//	$(#img_film).slideUp()			
-	//});
+///*liveshow header*/
+//var A=[],i=1,n=3;	
+//function load(){
+//	var j;	
+//	for ( j = 1 ; j <= n ; j++){
+//		A[j]=new Image();
+//		A[j].src="images/liveshow/"+j+".jpg";
+//	}
+//}	
+//function output(l){
+//	document.getElementById("img_film").src=A[l].src;
+//	document.getElementById("name").innerHTML=S[l];
+//	//$(document).ready(function() {
+//	//	$(#img_film).slideUp()			
+//	//});
 	
-}	
-function next(){
-	if(i<n){
-		i++;
-		output(i); 
-	}
-	else{
-		i=1;
-		output(i);
-	}
-}
-function back(){
-	if(i>1){
-		i--;
-		output(i); 
-	}
-	else{
-		i=n;
-		output(i); 
-	}
-}
-setInterval("next()",7000);
+//}	
+//function next(){
+//	if(i<n){
+//		i++;
+//		output(i); 
+//	}
+//	else{
+//		i=1;
+//		output(i);
+//	}
+//}
+//function back(){
+//	if(i>1){
+//		i--;
+//		output(i); 
+//	}
+//	else{
+//		i=n;
+//		output(i); 
+//	}
+//}
+//setInterval("next()",7000);
 /*Danh sach tin tuc content*/
 function chon(c){
 	$(document).ready(function() {

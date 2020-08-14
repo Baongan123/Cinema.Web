@@ -68,6 +68,7 @@ home.drawSearch = function () {
             }
         });
     } else {
+        $('#homebody').remove();
         location.reload();
     }
     
