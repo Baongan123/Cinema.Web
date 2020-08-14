@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Cinema.Web.Models.ComboFood
+namespace Cinema.Web.Models.Event
 {
-    public class DeleteCombooFoodResult
+    public class DeleteEventResult
     {
-        public int ComboFoodId { get; set; }
+        public int EventId { get; set; }
         public string Message { get; set; }
     }
 }

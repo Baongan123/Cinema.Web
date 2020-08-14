@@ -76,6 +76,7 @@ combo.delete = function (id) {
                 dataType: "json",
                 success: function (data) {
                     bootbox.alert('Xóa thành công!');
+                    location.reload();
                 }
             });
         }
@@ -101,6 +102,7 @@ combo.restore = function (id) {
                 dataType: "json",
                 success: function (data) {
                     bootbox.alert('Khôi phục thành công thành công!');
+                    location.reload();
                 }
             });
         }

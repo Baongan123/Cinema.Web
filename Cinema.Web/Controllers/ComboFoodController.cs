@@ -29,14 +29,14 @@ namespace Cinema.Web.Controllers
         
         public JsonResult Delete(int id)
         {
-            var result = new DeleteComboResult();
-            result = ApiHelper<DeleteComboResult>.HttpGetAsync($"{Helper.ApiUrl}api/combofood/delete/{id}","DELETE");
+            var result = new DeleteCombooFoodResult();
+            result = ApiHelper<DeleteCombooFoodResult>.HttpGetAsync($"{Helper.ApiUrl}api/combofood/delete/{id}","DELETE");
             return Json(new { result });
         }
         public JsonResult Restore(int id)
         {
-            var result = new DeleteComboResult();
-            result = ApiHelper<DeleteComboResult>.HttpGetAsync($"{Helper.ApiUrl}api/combofood/restore/{id}");
+            var result = new DeleteCombooFoodResult();
+            result = ApiHelper<DeleteCombooFoodResult>.HttpGetAsync($"{Helper.ApiUrl}api/combofood/restore/{id}");
             return Json(new { result });
         }
         public JsonResult GetAll()
