@@ -1350,8 +1350,10 @@ a {
   transition: .3s all ease-in-out; }
   .media-image .media-image-body {
     padding: 30px; }
-  .media-image h2 {
-    font-size: 1.2rem; }
+    .media-image h2 {
+        margin-top: -17px;
+        font-size: 1.6rem;
+    }
   .media-image:hover {
     -webkit-box-shadow: 0 5px 40px -5px rgba(0, 0, 0, 0.1);
     box-shadow: 0 5px 40px -5px rgba(0, 0, 0, 0.1); }
