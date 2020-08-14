@@ -104,6 +104,23 @@ namespace Cinema.Web.Controllers
             return Json(new { result });
         }
 
-
+        public JsonResult GetsFilmTop()
+        {
+            var films= new List<Film>();
+            films = ApiHelper<List<Film>>.HttpGetAsync($"{Helper.ApiUrl}api/film/GetfilmsByrate");
+            return Json(new { films });
+        }
+        public IActionResult Search()
+        {
+            ViewBag.Title = "Cinema NPT";
+            return View();
+        }
+        [HttpPost]
+        public JsonResult Searchfilm([FromBody] KeySearch model)
+        {
+            var search = new List<Film>();
+            search = ApiHelper<List<Film>>.HttpPostAsync($"{Helper.ApiUrl}api/Film/Searchfilm",model);
+            return Json(new { search });
+        }
     }
 }

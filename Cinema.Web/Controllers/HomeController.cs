@@ -37,6 +37,7 @@ namespace Cinema.Web.Controllers
             }
             return View();
         }
+        
         public IActionResult Film(int id)
         {
             ViewBag.Title = "Cinema NPT";
@@ -65,6 +66,16 @@ namespace Cinema.Web.Controllers
             films = ApiHelper<List<Film>>.HttpGetAsync($"{Helper.ApiUrl}api/Home/Film");
             return Json(new { films });
         }
-
+        [HttpPost]
+        public JsonResult GetFilmsOfDay([FromBody] DayRequests day)
+        {
+            var films = new List<Film>();
+            films = ApiHelper<List<Film>>.HttpPostAsync($"{Helper.ApiUrl}api/film/GetFilmsOfDay",day);
+            return Json(new { films });
+        }
+        public IActionResult FilmOfDate()
+        {
+            return View();
+        }
     }
 }
