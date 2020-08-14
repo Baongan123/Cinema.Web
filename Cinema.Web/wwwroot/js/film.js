@@ -79,7 +79,7 @@ film.initCategory = function () {
          success: function (data) {
              $('#Category').empty();
              $('#menucategory').empty();
-             $('#menucategory').append(`<a href="/Film/FilmNowShowing/${data.category.categoryId}">${data.category.categoryName}</a>`)
+             $('#menucategory').append(`<a href="/Film/FilmNowShowing/${data.category.categoryId}">${data.category.categoryName} <span style="color:black">( Phim đang chiếu)</span></a>`)
              $('#Category').append(`<p value="${data.category.categoryId}">${data.category.categoryName}</p>`)
         }
     });

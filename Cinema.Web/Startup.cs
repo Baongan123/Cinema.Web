@@ -50,7 +50,7 @@ namespace Cinema.Web
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Management}/{action=index}/{id?}");
+                    pattern: "{controller=home}/{action=demo}/{id?}");
             });
         }
     }

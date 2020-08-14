@@ -32,7 +32,6 @@
 <body>
 
     <div class="site-wrap">
-<<<<<<< HEAD
         <header>
           <!--top_header-->
             <div class="content_header fixed-top">
@@ -53,7 +52,7 @@
                                         <a href="/Home/FilmOfDate">Lịch chiếu theo ngày</a>
                                     </li>
                                     <li style="width:300px">
-                                        <input type="text" style="width:95%;border-radius:25px;" placeholder="Tìm kiếm ...">
+                                        <input type="text" id="keysearch" oninput="home.drawSearch()" style="width:95%;border-radius:25px;" placeholder="Tìm kiếm ...">
                                     </li>
                                 </ul>
                                 <ul style="float:right;margin-top:-15px">
@@ -68,64 +67,7 @@
                     </div><!--menu-->
                 </div><!--content-->
             </div><!--content_header-->
-=======
-        <header>
-
-            <div class="top_header">
-                <div class="top">
-                    <div class="account">
-                        <a href="#">ĐĂNG NHẬP</a> |
-                        <a href="#">ĐĂNG KÝ</a>
-                    </div>
-
-                </div><!--top-->
-            </div><!--top_header-->
-            
-                
-           
-            <div class="content_header">
-                
-                <form name="timkiem">
-                    <div class="form-group form-inline">
-                        <input style="border-radius:40px;background-color:aqua" placeholder="Nhập từ khoá..." type="text" name="search" oninput="home.drawSearch()" id="keysearch" class="form-control form-inline" />
-                        <i class="fas fa-search"></i>
-                    </div>
-                </form>
-                <div class="content">
-                    <div class="logo">
-                        <a href="index.html"><img src="/images/logonptcinema.jpg" style="margin-top:-22px" /></a>
-                    </div><!--logo-->
-
-                    <div class="menu" style="margin-top:-16px">
-
-                        <nav>
-                            <ul>
-                                <li style="background-color: #da280b; color: #FFF;">
-                                    <a asp-controller="Home" asp-action="demo" style="color: #FFF; ">TRANG CHỦ</a>
-                                </li>
-                                <li>
-                                    <a href="The_Loai.html">PHIM THEO NGÀY</a>
-                                </li>
-                                <li>
-                                    <a href="Tin_Tuc.html">PHIM THEO</a>
-                                </li>
-                                <li>
-                                    <a asp-controller="CategoryFilm" asp-action="Categoryfilm">QUẢN LÝ</a>
-                                </li>
-                                <li>
-                                  
-                                </li>
-
-
-                            </ul>
-                        </nav>
-
-
-                    </div><!--menu-->
-
-                </div><!--content-->
-            </div><!--content_header-->
->>>>>>> Deverloper
+        
         </header>
         @RenderBody()
 
