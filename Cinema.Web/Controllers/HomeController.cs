@@ -9,6 +9,7 @@ using Cinema.Web.Models;
 using Cinema.Web.Ultilities;
 using Cinema.Web.Models.Film;
 using Cinema.Web.Models.Showing;
+using Cinema.Web.Models.Event;
 
 namespace Cinema.Web.Controllers
 {
@@ -29,6 +30,12 @@ namespace Cinema.Web.Controllers
         public IActionResult Demo()
         {
             ViewBag.Title = "Cinema NPT";
+            var banner = new List<EventDelete>();
+            banner = ApiHelper<List<EventDelete>>.HttpGetAsync($"{Helper.ApiUrl}api/event/gets");
+            if (banner != null)
+            {
+                ViewBag.banners = banner;
+            }
             var films = new List<Film>();
             films = ApiHelper<List<Film>>.HttpGetAsync($"{Helper.ApiUrl}api/Home/Film");
             if (films != null)
