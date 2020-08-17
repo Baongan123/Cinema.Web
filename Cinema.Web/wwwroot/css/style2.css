@@ -21,7 +21,7 @@ body {
 
 h1, h2, h3, h4, h5,
 .h1, .h2, .h3, .h4, .h5 {
-  color: #000; }
+  color: white; }
 
 a {
   -webkit-transition: .3s all ease;
@@ -131,7 +131,7 @@ a {
 
 .site-footer {
   padding: 4em 0;
-  background: #1e1e1c;
+ /* background: #1e1e1c;*/
   color: rgba(255, 255, 255, 0.5); }
   .site-footer .footer-heading {
     font-size: 1rem;
