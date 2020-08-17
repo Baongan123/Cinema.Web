@@ -65,18 +65,21 @@ film.drawFilm = function () {
         method: "GET",
         dataType: "json",
         success: function (data) {
-            $('#Image').attr('src', data.film.image);
-            $('#FilmName').empty()
-            $('#FilmName').append(`<p class="textcolorwhite">${data.film.filmName} </p>`);
-            $('#FilmNameBK').empty()
-            $('#FilmNameBK').append(`<p class="textcolorwhite">${data.film.filmName} </p>`);
-            $('#Title').empty()
-            $('#Title').append(`<p class="textcolorwhite">${data.film.title} </p>`);
-            $('#Description').empty();
-            $('#Description').append(`<p class="textcolorwhite">${data.film.description} </p>`);
-            $('#trailer').attr('src', `${link}/${data.film.linkTrailer}`);
-            film.initCategory(data.film.categoryId);
-
+            if (data.film.filmId > 0) {
+                $('#Image').attr('src', data.film.image);
+                $('#FilmName').empty()
+                $('#FilmName').append(`<p class="textcolorwhite">${data.film.filmName} </p>`);
+                $('#FilmNameBK').empty()
+                $('#FilmNameBK').append(`<p class="textcolorwhite">${data.film.filmName} </p>`);
+                $('#Title').empty()
+                $('#Title').append(`<p class="textcolorwhite">${data.film.title} </p>`);
+                $('#Description').empty();
+                $('#Description').append(`<p class="textcolorwhite">${data.film.description} </p>`);
+                $('#trailer').attr('src', `${link}/${data.film.linkTrailer}`);
+                film.initCategory(data.film.categoryId);
+            } else {
+                location.replace("https://localhost:44305")
+            }
         }
     });
 }
@@ -108,8 +111,6 @@ film.showing = function (day, id) {
             var i = 0;
             $(`#timeshow_${id}`).empty();
             for (i; i < data.timeshows.length; i++) {
-   
-
                 $(`#timeshow_${id}`).append(`<a href="javascript:;" 
                                 onclick="film.openmodalbookfilm(${data.timeshows[i].showingId})" 
                                 class="btn btn-outline-primary ml-5"> ${data.timeshows[i].startTime}</a>`)

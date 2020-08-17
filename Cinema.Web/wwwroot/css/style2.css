@@ -729,9 +729,11 @@ a {
       background: #71bc42;
       color: #fff; }
   .block-13 .owl-nav .owl-prev, .block-14 .owl-nav .owl-prev, .block-15 .owl-nav .owl-prev {
-    left: -20px; }
-  .block-13 .owl-nav .owl-next, .block-14 .owl-nav .owl-next, .block-15 .owl-nav .owl-next {
-    right: -20px; }
+    left: -20px;margin-top:-110px; }
+.block-13 .owl-nav .owl-next, .block-14 .owl-nav .owl-next, .block-15 .owl-nav .owl-next {
+    right: -20px;
+    margin-top: -110px;
+}
 
 .block-13 .owl-dots, .block-14 .owl-dots, .block-15 .owl-dots {
   text-align: center; }

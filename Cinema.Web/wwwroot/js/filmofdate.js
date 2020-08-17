@@ -541,8 +541,76 @@ Array.prototype.remove = function () {
     }
     return this;
 };
+film.adddaynow = function () {
+    var date = Date();
+    var day = date.toString();
+    $("#keydate").val(convert(day));
+}
+
+function convert(str) {
+    var date = new Date(str),
+        mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+        day = ("0" + date.getDate()).slice(-2);
+    return [date.getFullYear(), mnth, day].join("-");
+}
+film.searchbyday = function () {
+    var dayObj = {};
+    dayObj.Day = $("#keydate").val();
+    $.ajax({
+        url: `/Home/GetFilmsOfDay`,
+        method: "POST",
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify(dayObj),
+        success: function (data) {
+            $(`#filmofdate`).empty();
+            $(`#filmofdate`).append(`<div style="margin-top:-10px;padding-left:30px">
+                                        <label style="color:white;font-size:30px;font-weight:bold">Kết quả: ${data.films.length}</label>
+                                    </div>
+                                    <div class="row justify-content-center" id="filmsSearch"></div>`)
+            $.each(data.films, function (i, p) {
+                $(`#filmsSearch`).append(` <div class="col-sm-6 p-5">
+                                 <div class="row border" style="margin-left:25px;width: 80%;">
+                                     <div class="col-sm-8 text-center">
+                                         <img src="${p.image}" style="width:250px;height:300px;margin-top:10px" />
+                                         <h5 style="margin-top:10px;color:white">${p.filmName}</h5>
+                                     </div>
+                                    <div class="col-sm-4 text-center border-left border-top">
+                                        <div>
+                                             <p style="margin-top:30px;color:white"><u><i><b>Giờ chiếu</b></i></u></p>
+                                             <div style="margin-top:10px" id="day_${dayObj.Day}_${p.filmId}">
+                                             </div>
+                                        </div>
+                                     </div>
+                                 </div>
+                             </div>
+                            `)
+                var reqObj = {};
+                reqObj.FilmId = p.filmId;
+                reqObj.DayShow = dayObj.Day;;
+                $.ajax({
+                    url: `/Home/ScreeningFilmOfDate`,
+                    method: "POST",
+                    dataType: "json",
+                    contentType: "application/json",
+                    data: JSON.stringify(reqObj),
+                    success: function (data) {
+                        $(`#day_${dayObj.Day}_${p.filmId}`).empty();
+                        $.each(data.timeshows, function (i, v) {
+                            $(`#day_${dayObj.Day}_${p.filmId}`).append(`
+                                             <p><a href="javascript:;" onclick="film.openmodalbookfilm(${v.showingId})"
+                                                class="btn btn-outline-primary" title="Đặt vé">${v.startTime}</a></p>
+                                        `)
+                        })
+                    }
+                });
+            })
+        }
+    });
+}
 film.init = function () {
     film.drawDatesShow();
+    film.adddaynow();
 };
 
 $(document).ready(function () {
