@@ -47,8 +47,15 @@ using Cinema.Web.Models.CategoryFilm;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "C:\Users\Admin\Desktop\Cinema\Cinema.Web\Cinema.Web\Views\_ViewImports.cshtml"
+using Cinema.Web.Models.Event;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a5fa5147e2d0e8ce6f1917ac9c3c2ff281939003", @"/Views/Home/HomeFilm.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7e7eb3d3cce1bd07fb9281760a30cfbe6d64d4bc", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0735799183de5b5d0dbf04c25b153c14b309e0b2", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_HomeFilm : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("src", "~/js/home.js", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -230,7 +237,7 @@ WriteAttributeValue("", 1934, film.Image, 1934, 11, false);
             WriteLiteral(">FACEBOOK</a>\r\n            <a href=\"#\">ZING ME</a>\r\n            <a href=\"#\">ZALO</a>\r\n        </div><!--fb-->\r\n    </div><!--share-->\r\n</article>\r\n\r\n\r\n");
             DefineSection("Scripts", async() => {
                 WriteLiteral("\r\n    ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a5fa5147e2d0e8ce6f1917ac9c3c2ff28193900310875", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a5fa5147e2d0e8ce6f1917ac9c3c2ff28193900311065", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

@@ -41,6 +41,13 @@ using Cinema.Web.Models.Showing;
 #line hidden
 #nullable disable
 #nullable restore
+#line 6 "C:\Users\Admin\Desktop\Cinema\Cinema.Web\Cinema.Web\Views\_ViewImports.cshtml"
+using Cinema.Web.Models.Event;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 1 "C:\Users\Admin\Desktop\Cinema\Cinema.Web\Cinema.Web\Views\Film\FilmOfCategory.cshtml"
 using Cinema.Web.Models.CategoryFilm;
 
@@ -48,7 +55,7 @@ using Cinema.Web.Models.CategoryFilm;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"00bd42dbd1fa88bd3a267b849b9008e98e3f3b51", @"/Views/Film/FilmOfCategory.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7e7eb3d3cce1bd07fb9281760a30cfbe6d64d4bc", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0735799183de5b5d0dbf04c25b153c14b309e0b2", @"/Views/_ViewImports.cshtml")]
     public class Views_Film_FilmOfCategory : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Film>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("id", new global::Microsoft.AspNetCore.Html.HtmlString("frmAddEditEmployee"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -183,7 +190,7 @@ WriteAttributeValue("", 1428, film.FilmId, 1428, 12, false);
 #line hidden
 #nullable disable
             WriteLiteral("                </tbody>\r\n            </table>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<!-- Modal -->\r\n<div id=\"addEditFilm\" class=\"modal fade\" data-backdrop=\"false\" role=\"dialog\">\r\n    <div class=\"modal-dialog modal-lg\">\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "00bd42dbd1fa88bd3a267b849b9008e98e3f3b519017", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "00bd42dbd1fa88bd3a267b849b9008e98e3f3b519207", async() => {
                 WriteLiteral(@"
             <div class=""modal-content"">
                 <div class=""modal-header"">
@@ -272,7 +279,7 @@ WriteAttributeValue("", 1428, film.FilmId, 1428, 12, false);
             WriteLiteral("\r\n    </div>\r\n</div>\r\n");
             DefineSection("Scripts", async() => {
                 WriteLiteral("\r\n    ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "00bd42dbd1fa88bd3a267b849b9008e98e3f3b5114501", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "00bd42dbd1fa88bd3a267b849b9008e98e3f3b5114691", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Cinema.Web.Models.ComboFood
 {
-    public class DeleteComboResult
+    public class DeleteCombooFoodResult
     {
         public int ComboFoodId { get; set; }
         public string Message { get; set; }

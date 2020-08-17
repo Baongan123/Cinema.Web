@@ -41,6 +41,13 @@ using Cinema.Web.Models.Showing;
 #line hidden
 #nullable disable
 #nullable restore
+#line 6 "C:\Users\Admin\Desktop\Cinema\Cinema.Web\Cinema.Web\Views\_ViewImports.cshtml"
+using Cinema.Web.Models.Event;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 1 "C:\Users\Admin\Desktop\Cinema\Cinema.Web\Cinema.Web\Views\Film\FilmUpComing.cshtml"
 using Cinema.Web.Models.CategoryFilm;
 
@@ -48,7 +55,7 @@ using Cinema.Web.Models.CategoryFilm;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7b44790dc88d5ee74abb7a8fcfd648f098d34975", @"/Views/Film/FilmUpComing.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7e7eb3d3cce1bd07fb9281760a30cfbe6d64d4bc", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0735799183de5b5d0dbf04c25b153c14b309e0b2", @"/Views/_ViewImports.cshtml")]
     public class Views_Film_FilmUpComing : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Film>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("src", "~/js/film.js", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -216,7 +223,7 @@ WriteAttributeValue("", 1779, film.FilmId, 1779, 12, false);
             WriteLiteral("                </tbody>\r\n            </table>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n");
             DefineSection("Scripts", async() => {
                 WriteLiteral("\r\n    ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7b44790dc88d5ee74abb7a8fcfd648f098d349759870", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7b44790dc88d5ee74abb7a8fcfd648f098d3497510060", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

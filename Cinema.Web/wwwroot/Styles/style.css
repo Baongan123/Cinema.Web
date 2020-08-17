@@ -35,27 +35,28 @@ header .content_header{
 	border-bottom: 4px solid #040303;
 }
 header .content_header .content{
-	width:960px; 
-	height:81px;
+	/*width:960px; */
+	height:100px;
 	padding: 24px 0 17px;
 	margin:auto;
 	position:relative;
 }
-header .content_header .content .logo{
-	width:270px; 
-	height:84px;  
-	position:absolute; 
-	top:22px; 
-	left:10px;
-}
+	header .content_header .content .logo {
+		width: 30%;
+		height: 84px;
+		position: absolute;		
+		top: 19px;
+		left: 37px;
+	}
 header .content_header .content .menu{
+	width:70%;
 	float: right;
 	position: relative;
 }
 /*<nav>*/
 header .content_header .content .menu nav{
-	width: 560px; 
-	height: 50px;
+	width: 100%; 
+	height: 52px;
 	margin: 10px 10px 0px 10px; 
 	float: right; 	
 	box-shadow: 0px 1px 16px rgba(0,0,0,0.37);
@@ -67,7 +68,7 @@ header .content_header .content .menu nav{
 	overflow: hidden;
 }
 header .content_header .content .menu nav ul li{
-	width: 110px;
+	width: 150px;
 	height: 50px;
 	line-height: 50px;
 	list-style-type:none;
@@ -81,6 +82,7 @@ header .content_header .content .menu nav ul li a{
 	text-decoration: none; 
 	color: #aeaeae;
 	font-weight:bold;
+	font-size:13px;
 }
 header .content_header .content .menu nav ul li:hover{
 	background-color: #da280b;	

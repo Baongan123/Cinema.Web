@@ -110,7 +110,6 @@ namespace Cinema.Web.Controllers
             films = ApiHelper<List<Film>>.HttpGetAsync($"{Helper.ApiUrl}api/film/GetfilmsByrate");
             return Json(new { films });
         }
-
         public IActionResult Search()
         {
             ViewBag.Title = "Cinema NPT";

@@ -33,21 +33,21 @@
                 <tbody>
                     @if (Model != null)
                     {
-                        foreach (ComboFoodAll combo in Model)
+                        for (int i=0;i<Model.Count;i++)
                         {
                             <tr>
-                                <td>@combo.ComboFoodId</td>
-                                <td> <a href="javascript:;" onclick="combo.get(@combo.ComboFoodId)" title="Chỉnh sửa" alt="Chỉnh sửa">@combo.ComboName</a></td>
-                                <td><img src="@combo.ImageCombo" width="50" height="50" /></td>
-                                <td>@combo.Price</td>
+                                <td>@Model[i].ComboFoodId</td>
+                                <td> <a href="javascript:;" onclick="combo.get(@Model[i].ComboFoodId)" title="Chỉnh sửa" alt="Chỉnh sửa">@Model[i].ComboName</a></td>
+                                <td><img src="@Model[i].ImageCombo" width="50" height="50" /></td>
+                                <td>@Model[i].Price</td>
                                 <td class="text-center">
-                                    @if (combo.IsDelete == "True")
+                                    @if (Model[i].IsDelete == "True")
                                     {
-                                        <label><input type="checkbox" style="transform:scale(2)" checked  onchange="combo.restore(@combo.ComboFoodId)" /></label>
+                                        <label><input type="checkbox" style="transform:scale(2)" checked  onchange="combo.restore(@Model[i].ComboFoodId)" /></label>
                                     }
                                     else
                                     {
-                                        <label><input type="checkbox" style="transform:scale(2)" onchange="combo.delete(@combo.ComboFoodId)"/></label>
+                                        <label><input type="checkbox" style="transform:scale(2)" onchange="combo.delete(@Model[i].ComboFoodId)"/></label>
                                     }
                                 </td>
                             </tr>
