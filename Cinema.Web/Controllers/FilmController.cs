@@ -110,6 +110,13 @@ namespace Cinema.Web.Controllers
             films = ApiHelper<List<Film>>.HttpGetAsync($"{Helper.ApiUrl}api/film/GetfilmsByrate");
             return Json(new { films });
         }
+         [HttpPost]
+        public JsonResult SearchfilmByDay([FromBody] DayRequests model)
+        {
+            var films = new List<Film>();
+            films = ApiHelper<List<Film>>.HttpPostAsync($"{Helper.ApiUrl}api/film/GetFilmsOfDay", model);
+            return Json(new { films });
+        }
         public IActionResult Search()
         {
             ViewBag.Title = "Cinema NPT";
@@ -121,6 +128,17 @@ namespace Cinema.Web.Controllers
             var search = new List<Film>();
             search = ApiHelper<List<Film>>.HttpPostAsync($"{Helper.ApiUrl}api/Film/Searchfilm",model);
             return Json(new { search });
+        }
+        /// <summary>
+        /// Tìm kiếm film trong 1 khoảng thời gian
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public JsonResult GesFilmByPeriod([FromBody] SearchDayRequests model)
+        {
+            var films = new List<Film>();
+            films = ApiHelper<List<Film>>.HttpPostAsync($"{Helper.ApiUrl}api/film/GetFilmsByPeriod", model);
+            return Json(new { films });
         }
     }
 }
