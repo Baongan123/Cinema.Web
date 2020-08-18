@@ -32,24 +32,34 @@
         </div>
     </div>
 </div>
-<section>
-    <div class="container row m-auto">
-        <div class="col-5 text-right">
-            <h3 class="js__active">
-                <a href="#">LỊCH CHIẾU THEO PHIM</a>
-            </h3>
+<section style="padding-top: 40PX;">
+    <div id="homebody">
+        <div class="container row m-auto">
+            <div class="col-5 text-right">
+                <h3 class="js__active">
+                    <a href="#">LỊCH CHIẾU THEO PHIM</a>
+                </h3>
+            </div>
+            <div class="col-2 text-center">
+                <h2>|</h2>
+            </div>
+            <div class="col-5 text-left">
+                <h3>
+                    <a href="/Home/FilmOfDate">LỊCH CHIẾU THEO NGÀY</a>
+                </h3>
+            </div>
         </div>
-        <div class="col-2 text-center">
-            <h2>|</h2>
-        </div>
-        <div class="col-5 text-left">
-            <h3>
-                <a href="/Home/FilmOfDate">LỊCH CHIẾU THEO NGÀY</a>
-            </h3>
-        </div>
-    </div>
-    <div style="margin-top:20px;padding:10px 20px" id="filmofdate">
+        <div style="text-align:center;margin-top:20px">
+            <span style="font-size:20px;color:white;margin-left:70px">Từ </span><input type="date" id="todate" style="width:220px;padding-left:20px;font-size:20px;border-radius:20px" />
+            <span style="font-size:20px;color:white">  Đến </span><input type="date" id="fromdate" style="width:220px;padding-left:20px;font-size:20px;border-radius:20px" />
+            <a href="javascript:;" onclick="film.searchbyday()" class="btn btn-primary" style="border-radius:20px;margin-top:-5px">Tìm kiếm</a>
+            <div id="countfilm">
 
+            </div>
+        </div>
+        <div style="margin-top:20px;padding:10px 20px" id="filmofdate">
+
+        </div>
     </div>
 </section>
 

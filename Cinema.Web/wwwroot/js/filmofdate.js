@@ -90,6 +90,140 @@ film.drawDatesShow = function () {
         }
     });
 }
+film.searchbyday = function () {
+    keyObj = {};
+    keyObj.ToDate = $("#todate").val();
+    keyObj.FromDate = $("#fromdate").val();
+    $.ajax({
+        url: `/Showing/SearchDayshowByPeriod`,
+        method: "POST",
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify(keyObj),
+        success: function (data) {
+            $('#filmofdate').empty();
+            $.each(data.days, function (i, v) {
+                var daycut = v.day.slice(0, 10);
+                $('#filmofdate').append(
+                    ` <div>
+                         <h3 style="border-bottom:2px solid white;padding-left:30px;color:white;margin-top:50px">
+                                       Ngày: ${daycut}</h3>
+                          <hr />
+                           <div class="row" id="day_${daycut}">
+                              
+                         </div>
+                     </div>`);
+                var dayObj = {};
+                dayObj.Day = daycut;
+                $.ajax({
+                    url: `/Home/GetFilmsOfDay`,
+                    method: "POST",
+                    dataType: "json",
+                    contentType: "application/json",
+                    data: JSON.stringify(dayObj),
+                    success: function (data) {
+                        $(`#day_${daycut}`).empty();
+                        $.each(data.films, function (i, p) {
+                            $(`#day_${daycut}`).append(` <div class="col-sm-6 p-5">
+                                 <div class="row border" style="margin-left:25px">
+                                     <div class="col-sm-8 text-center">
+                                         <img src="${p.image}" style="width:250px;height:300px;margin-top:10px" />
+                                         <h5 style="margin-top:10px;color:white">${p.filmName}</h5>
+                                     </div>
+                                    <div class="col-sm-4 text-center border-left border-top">
+                                        <div>
+                                             <p style="margin-top:30px;color:white"><u><i><b>Giờ chiếu</b></i></u></p>
+                                             <div style="margin-top:10px" id="day_${daycut}_${p.filmId}">
+                                             </div>
+                                        </div>
+                                     </div>
+                                 </div>
+                             </div>
+                            `)
+                            var reqObj = {};
+                            reqObj.FilmId = p.filmId;
+                            reqObj.DayShow = daycut;
+                            $.ajax({
+                                url: `/Home/ScreeningFilmOfDate`,
+                                method: "POST",
+                                dataType: "json",
+                                contentType: "application/json",
+                                data: JSON.stringify(reqObj),
+                                success: function (data) {
+                                    $(`#day_${daycut}_${p.filmId}`).empty();
+                                    if (data.timeshows.length > 0) {
+                                        $.each(data.timeshows, function (i, v) {
+                                            $(`#day_${daycut}_${p.filmId}`).append(`
+                                             <p><a href="javascript:;" onclick="film.openmodalbookfilm(${v.showingId})" class="btn btn-outline-primary" title="Đặt vé">${v.startTime}</a></p>
+                                        `)
+                                        })
+                                    } else {
+                                        $(`#day_${daycut}_${p.filmId}`).append(`<p style="color:red"> Đã chiếu</p>`)
+                                    }
+                                  
+                                }
+                            });
+                        })
+                    }
+                });
+            })
+        }
+    });
+}
+//film.searchbyday = function () {
+//    keyObj = {};
+//    keyObj.ToDate = $("#todate").val();
+//    keyObj.FromDate = $("#fromdate").val();
+//    $.ajax({
+//        url: `/Film/SearchfilmByDay`,
+//        method: "POST",
+//        dataType: "json",
+//        contentType: "application/json",
+//        data: JSON.stringify(keyObj),
+//        success: function (data) {
+//            $("#countfilm").empty();
+//            $("#countfilm").append(`<span style="font-size:30px;color:white">Tìm kiếm :  ${data.films.length}</span>`);
+//            $('#filmofdate').empty();
+//            $.each(data.films, function (i, p) {
+//                $(`#filmofdate`).append(` <div class="col-sm-6 p-5">
+//                                 <div class="row border" style="margin-left:25px">
+//                                     <div class="col-sm-8 text-center">
+//                                         <img src="${p.image}" style="width:250px;height:300px;margin-top:10px" />
+//                                         <h5 style="margin-top:10px;color:white">${p.filmName}</h5>
+//                                     </div>
+//                                    <div class="col-sm-4 text-center border-left border-top">
+//                                        <div>
+//                                             <p style="margin-top:30px;color:white"><u><i><b>Giờ chiếu</b></i></u></p>
+//                                             <div style="margin-top:10px" id="day_${p.filmId}">
+//                                             </div>
+//                                        </div>
+//                                     </div>
+//                                 </div>
+//                             </div>
+//                            `)
+//                var reqObj = {};
+//                reqObj.FilmId = p.filmId;
+//                reqObj.DayShow = keyObj.Day;
+//                $.ajax({
+//                    url: `/Home/ScreeningFilmOfDate`,
+//                    method: "POST",
+//                    dataType: "json",
+//                    contentType: "application/json",
+//                    data: JSON.stringify(reqObj),
+//                    success: function (data) {
+//                        $(`#day_${p.filmId}`).empty();
+//                        $.each(data.timeshows, function (i, v) {
+//                            $(`#day_${p.filmId}`).append(`
+//                                             <p><a href="javascript:;" onclick="film.openmodalbookfilm(${v.showingId})" class="btn btn-outline-primary" title="Đặt vé">${v.startTime}</a></p>
+//                                        `)
+//                        })
+//                    }
+//                });
+//            })
+//        }
+//    });
+//}
+
 film.pay = function () {
     film.saveSeat();
 }
@@ -257,7 +391,7 @@ film.openmodalbookfilm = function (showingid) {
                      <table id="bookseat">
                         <tr>
                             <th colspan="1"></th>
-                            <th colspan="10" style="border:2px solid;text-align:center"><h3>Màn hình</h3></th>
+                            <th colspan="10" style="border:2px solid;text-align:center;"><h3 style="color:black">Màn hình</h3></th>
                         </tr>
                         <tr id="numberseat">
                             <th width = "50" height = "30" ></th >
@@ -301,11 +435,14 @@ film.descriptionshowing = function (id) {
         method: "GET",
         dataType: "json",
         success: function (data) {
+            filmId = data.descriptionShowing.filmId;
             starttime = data.descriptionShowing.startTime;
             dayshow = data.descriptionShowing.dayshow;
             roomname = data.descriptionShowing.roomName;
             numberChairOn = data.descriptionShowing.numberChairOn;
             priceticket = data.descriptionShowing.priceTicket;
+            $('#FilmNameBK').empty()
+            $('#FilmNameBK').append(`<p class="textcolorwhite" style="color:black"><i>${data.descriptionShowing.filmName}</i> </p>`);
             $('#timeshowoffilm').empty()
             $('#timeshowoffilm').append(`<p>${starttime}  ${dayshow}</p>`);
             $('#roomname').empty()
@@ -541,8 +678,16 @@ Array.prototype.remove = function () {
     }
     return this;
 };
+film.updateDay = function () {
+    var day = new Date();
+    var today = `${day.getFullYear()}-${day.getMonth()+1}-${day.getDate()}`;
+    $("#todate").val(convert(today));
+    var fromday = `${day.getFullYear()}-${day.getMonth() + 2}-${day.getDate()}`;
+    $("#fromdate").val(convert(fromday));
+}
 film.init = function () {
     film.drawDatesShow();
+    film.updateDay();
 };
 
 $(document).ready(function () {
