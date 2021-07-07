@@ -12,7 +12,9 @@ categoryfilm.drawTable = function () {
                     `<tr>
                         <td>${v.categoryId}</td>
                         <td>${v.categoryName}</td>
-                        <td><a href="/Film/FilmOfCategory/${v.categoryId}" >${v.count}</a></td>
+                        <td class="text-center"><a href="/Film/FilmNowShowing/${v.categoryId}" >${v.countNowShowing}</a></td>
+                         <td class="text-center"><a href="/Film/FilmUpComing/${v.categoryId}" >${v.countUpcoming}</a></td>
+                         <td class="text-center"><a href="/Film/FilmScreened/${v.categoryId}" >${v.countScreened}</a></td>
                     </tr>`
                 );
             });
@@ -28,7 +30,7 @@ categoryfilm.drawListCategoryfilm = function () {
         success: function (data) {
             $('#listcategoryfilm').empty();
             $.each(data.categories, function (i, v) {
-                $("#listcategoryfilm").append(`<li><a href="/Film/FilmOfCategory/${v.categoryId}">${v.categoryName}</a></li>`)
+                $("#listcategoryfilm").append(`<li><a href="/Film/FilmNowShowing/${v.categoryId}">${v.categoryName}</a></li>`)
             });
         }
     });

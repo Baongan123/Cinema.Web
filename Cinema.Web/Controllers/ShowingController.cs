@@ -32,5 +32,12 @@ namespace Cinema.Web.Controllers
             seats = ApiHelper<List<Seat>>.HttpGetAsync($"{Helper.ApiUrl}api/Showing/Seats/{id}");
             return Json(new { seats });
         }
+        
+        public JsonResult Top7DatesShow()
+        {
+            var days = new List<Dayshow>();
+            days= ApiHelper<List<Dayshow>>.HttpGetAsync($"{Helper.ApiUrl}api/Showing/Top7DatesShow");
+            return Json(new { days });
+        }
     }
 }

@@ -54,7 +54,7 @@ film.create = function () {
     saveObj.Description = $('#Description').val();
     saveObj.LinkTrailer = $('#Linktrailer').val();
     saveObj.Image = $('#Image').attr('src');
-    saveObj.CategoryId = parseInt($('#Category').val());
+    saveObj.CategoryId = catId;
 
     $.ajax({
         url: `/Film/Create/`,
@@ -69,6 +69,8 @@ film.create = function () {
         }
     });
 }
+
+
 film.initCategory = function () {
     $.ajax({
         url: `/Categoryfilm/Get/${catId}`,
@@ -77,8 +79,8 @@ film.initCategory = function () {
          success: function (data) {
              $('#Category').empty();
              $('#menucategory').empty();
-             $('#menucategory').append(`<a href="/Film/FilmOfCategory/${data.category.categoryId}">${data.category.categoryName}</a>`)
-             $('#Category').append(`<option value="${data.category.categoryId}">${data.category.categoryName}</option>`)
+             $('#menucategory').append(`<a href="/Film/FilmNowShowing/${data.category.categoryId}">${data.category.categoryName} <span style="color:black">( Phim đang chiếu)</span></a>`)
+             $('#Category').append(`<p value="${data.category.categoryId}">${data.category.categoryName}</p>`)
         }
     });
 }
@@ -111,7 +113,7 @@ film.drawListCategoryfilm = function () {
         success: function (data) {
             $('#listcategoryfilm').empty();
             $.each(data.categories, function (i, v) {
-                $("#listcategoryfilm").append(`<li><a href="/Film/FilmOfCategory/${v.categoryId}">${v.categoryName}</a></li>`)
+                $("#listcategoryfilm").append(`<li><a href="/Film/FilmNowShowing/${v.categoryId}">${v.categoryName}</a></li>`)
             });
         }
     });

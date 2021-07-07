@@ -12,7 +12,7 @@ namespace Cinema.Web.Controllers
 {
     public class FilmController:Controller
     {
-        public IActionResult FilmOfCategory(int id)
+        public IActionResult FilmScreened(int id)
         {
             ViewBag.Title = "Film NPT";
             var category = new CategoryFilm();
@@ -22,7 +22,35 @@ namespace Cinema.Web.Controllers
                 ViewBag.Category = category;
             }
             List<Film> films = new List<Film>();
-            films = ApiHelper<List<Film>>.HttpGetAsync($"{Helper.ApiUrl}api/Films/Category/{id}");
+            films = ApiHelper<List<Film>>.HttpGetAsync($"{Helper.ApiUrl}api/film/getfilmscreened/{id}");
+            ViewBag.CategoryId = id;
+            return View(films);
+        }
+        public IActionResult FilmUpComing(int id)
+        {
+            ViewBag.Title = "Film NPT";
+            var category = new CategoryFilm();
+            category = ApiHelper<CategoryFilm>.HttpGetAsync($"{Helper.ApiUrl}api/CategoryFilm/GetbyCateId/{id}");
+            if (category != null)
+            {
+                ViewBag.Category = category;
+            }
+            List<Film> films = new List<Film>();
+            films = ApiHelper<List<Film>>.HttpGetAsync($"{Helper.ApiUrl}api/film/GetfilmUpComing/{id}");
+            ViewBag.CategoryId = id;
+            return View(films);
+        }
+        public IActionResult FilmNowShowing(int id)
+        {
+            ViewBag.Title = "Film NPT";
+            var category = new CategoryFilm();
+            category = ApiHelper<CategoryFilm>.HttpGetAsync($"{Helper.ApiUrl}api/CategoryFilm/GetbyCateId/{id}");
+            if (category != null)
+            {
+                ViewBag.Category = category;
+            }
+            List<Film> films = new List<Film>();
+            films = ApiHelper<List<Film>>.HttpGetAsync($"{Helper.ApiUrl}api/film/GetFilmNowShowing/{id}");
             ViewBag.CategoryId = id;
             return View(films);
         }
@@ -76,6 +104,23 @@ namespace Cinema.Web.Controllers
             return Json(new { result });
         }
 
-
+        public JsonResult GetsFilmTop()
+        {
+            var films= new List<Film>();
+            films = ApiHelper<List<Film>>.HttpGetAsync($"{Helper.ApiUrl}api/film/GetfilmsByrate");
+            return Json(new { films });
+        }
+        public IActionResult Search()
+        {
+            ViewBag.Title = "Cinema NPT";
+            return View();
+        }
+        [HttpPost]
+        public JsonResult Searchfilm([FromBody] KeySearch model)
+        {
+            var search = new List<Film>();
+            search = ApiHelper<List<Film>>.HttpPostAsync($"{Helper.ApiUrl}api/Film/Searchfilm",model);
+            return Json(new { search });
+        }
     }
 }

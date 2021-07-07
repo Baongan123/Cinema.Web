@@ -59,7 +59,7 @@ namespace Cinema.Web.Controllers
                     ShowingId = model.ShowingId,
                     CountTicket = model.listseat.Length,
                     PriceTiket = model.TotalPriceTiket,
-                    ListChair = model.listNameSeat,
+                    ListChair = model.ListNameSeat,
                     TotalPrice = model.TotalPriceOrder + model.TotalPriceTiket
                 };
                 CreateBookFilm(bookFilm, out int BookfilmId);

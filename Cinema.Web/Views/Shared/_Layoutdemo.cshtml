@@ -1,9 +1,11 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Neos &mdash; Website Template by Colorlib</title>
+    <title>NPT_Cinema &mdash; WebCinema by NPT</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="images/icon_title.png" type="image/png">
+    <link href="~/Styles/style.css" type="text/css" rel="stylesheet" />
 
 
     <link href="https://fonts.googleapis.com/css?family=Oswald:400,700|Work+Sans:300,400,700" rel="stylesheet">
@@ -20,13 +22,57 @@
     <link href="~/css/mystyle.css" rel="stylesheet" />
     <link href="~/css/aos.css" rel="stylesheet" />
     <link href="~/css/style2.css" rel="stylesheet" />
+    <link href="~/css/text.css" rel="stylesheet" />
+    <link href="~/css/search.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
 
 </head>
 <body>
 
     <div class="site-wrap">
+        <header>
+          <!--top_header-->
+            <div class="content_header fixed-top">
+                <div class="content">
+                    <div class="logo">
+                        <a href="/Management/Index">
+                            <img src="/images/logocine1.jpg" style="width:140px; height:76px; margin-top:-41px;margin-left: -33px"/>
+                            <img class="circle-icon-wrap" src="/images/logonho.jpg" style="margin-top:30px; margin-left:-100px"/>
+                        </a>
+                    </div><!--logo-->
+                    <div class="menu" style="margin-top:-6px">
+                            <nav>
+                                <ul>
+                                    <li style="background-color: #da280b; color: #FFF;">
+                                        <a asp-controller="Home" asp-action="demo" style="color: #FFF; ">TRANG CHỦ</a>
+                                    </li>
+                                    <li>
+                                        <a href="The_Loai.html">Lịch chiếu theo phim</a>
+                                    </li>
+                                    <li>
+                                        <a href="/Home/FilmOfDate">Lịch chiếu theo ngày</a>
+                                    </li>
+                                    <li style="width:300px">
+                                        <input type="text" id="keysearch" oninput="home.drawSearch()" style="width:95%;border-radius:25px;" placeholder="Tìm kiếm ...">
+                                    </li>
+                                </ul>
+                                <ul style="float:right;margin-top:-15px">
+                                    <li>
+                                        <a href="#">ĐĂNG NHẬP</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">ĐĂNG KÝ</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                    </div><!--menu-->
+                </div><!--content-->
+            </div><!--content_header-->
+        </header>
 
-        <div class="site-navbar-wrap js-site-navbar bg-white">
+        @*<div class="site-navbar-wrap js-site-navbar bg-white">
 
             <div class="container">
                 <nav class="container navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -38,13 +84,13 @@
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                                <a class="nav-link" asp-controller="Home" asp-action="demo">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" asp-controller="Home" asp-action="Index">Film</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Home" asp-action="Index">Management</a>
+                                <a class="nav-link" asp-controller="CategoryFilm" asp-action="Categoryfilm">Management</a>
                             </li>
                         </ul>
                         <ul class="navbar-nav ml-auto">
@@ -56,49 +102,39 @@
 
                 </nav>
             </div>
-        </div>
+        </div>*@
 
-        @RenderBody()
+            <div style="margin-top:80px">
+                @RenderBody()
+            </div>
+        
 
         <footer class="site-footer bg-dark">
             <div class="container">
-
-
                 <div class="row">
                     <div class="col-md-4 mb-4 mb-md-0">
-                        <h3 class="footer-heading mb-4 text-white">About</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat quos rem ullam, placeat amet.</p>
-                        <p><a href="#" class="btn btn-primary text-white px-4">Read More</a></p>
+                        <h3 class="footer-heading mb-4 text-white">Về Rạp Chiếu Phim</h3>
+                        <p>Luôn tổ chức nhiều sự kiện, ưu đãi hấp dẫn cho các bạn đến với rạp phim cũng như các bạn thành viên...!</p>
+                        <p><a href="#" class="btn btn-primary text-white px-4">Chi Tiết</a></p>
                     </div>
                     <div class="col-md-5 mb-4 mb-md-0 ml-auto">
-                        <div class="row mb-4">
-                            <div class="col-md-6">
-                                <h3 class="footer-heading mb-4 text-white">Quick Menu</h3>
-                                <ul class="list-unstyled">
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">About</a></li>
-                                    <li><a href="#">Blog</a></li>
-                                    <li><a href="#">Contacts</a></li>
-                                    <li><a href="#">Privacy</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <h3 class="footer-heading mb-4 text-white">Free Templates</h3>
-                                <ul class="list-unstyled">
-                                    <li><a href="#">HTML5 / CSS3</a></li>
-                                    <li><a href="#">Clean Design</a></li>
-                                    <li><a href="#">Responsive</a></li>
-                                    <li><a href="#">Multi Purpose Template</a></li>
+                        <div class="row mb-4">                           
+                            <div class="col-md-12">
+                                <h3 class="footer-heading mb-4 text-white">NPT_Cinema</h3>
+                                <ul>
+                                    <li>Email       : npt_cinema@gmail.com</li>
+                                    <li>Điện thoại  : 0165 342 9433</li>
+                                    <li>Fax         : 017 123 7777</li>
                                 </ul>
                             </div>
                         </div>
 
                         <div class="row mb-5">
                             <div class="col-md-12">
-                                <h3 class="footer-heading mb-4 text-white">Stay up to date</h3>
+                                <h3 class="footer-heading mb-4 text-white">Ý kiến của khách hàng</h3>
                                 <form action="#" class="d-flex footer-subscribe">
-                                    <input type="text" class="form-control rounded-0" placeholder="Enter your email">
-                                    <input type="submit" class="btn btn-primary rounded-0" value="Subscribe">
+                                    <input type="text" class="form-control rounded-0" placeholder="Nhập ý kiến">
+                                    <input type="submit" class="btn btn-primary rounded-0" value="Gửi Đi">
                                 </form>
                             </div>
                         </div>
@@ -125,8 +161,9 @@
                     <div class="col-md-12">
                         <p>
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright &copy;
-                            <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                            NPT_Ciname &copy;
+                            <script>document.write(new Date().getFullYear());</script>
+                            <script>document.write(new Date().getFullYear());</script> Xem là mê | Ăn là phê
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </p>
 
@@ -151,6 +188,8 @@
     <script src="~/vendor/bootbox/bootbox.js"></script>
     <script src="~/js/aos.js"></script>
     <script src="~/js/main2.js"></script>
+    @*<script src="~/Scripts/scripts.js"></script>*@
+
 
     @RenderSection("Scripts", required: false)
 </body>
